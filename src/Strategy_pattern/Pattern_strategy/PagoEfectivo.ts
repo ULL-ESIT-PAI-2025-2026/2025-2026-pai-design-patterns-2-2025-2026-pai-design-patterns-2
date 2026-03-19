@@ -4,18 +4,22 @@
  * Grado en Ingeniería Informática
  * Programación de Aplicaciones Interactivas 2025-2026
  *
- * @desc Implementación de pago en efectivo
+ * @author Saúl Lorenzo Armas
+ * @author Sergio Rosales Calzadilla
+ * @author Keran Miranda González
+ * @since Mar 13 2026
+ * @desc Implementation of cash payment
  */
 
-import { MetodoPago } from './MetodoPago.ts';
+import { PaymentMethod } from './MetodoPago.ts';
 
-export class PagoEfectivo extends MetodoPago {
+export class CashPayment extends PaymentMethod {
 
   /** 
-   * @desc Ejecuta el pago en efectivo
-   * @return void
+   * @desc Executes the cash payment
    */
-  public procesarPago(): void {
-    console.log('Pago en efectivo realizado');
+  processPayment(): void {
+    console.log('Cash payment completed');
   }
 }
+

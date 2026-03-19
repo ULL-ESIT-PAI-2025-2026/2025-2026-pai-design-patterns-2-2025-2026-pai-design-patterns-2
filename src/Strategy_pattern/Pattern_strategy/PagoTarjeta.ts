@@ -4,19 +4,21 @@
  * Grado en Ingeniería Informática
  * Programación de Aplicaciones Interactivas 2025-2026
  *
+ * @author Saúl Lorenzo Armas
+ * @author Sergio Rosales Calzadilla
  * @author Keran Miranda González
  * @since Mar 13 2026
- * @desc Implementación de pago con tarjeta
+ * @desc Implementation of card payment
  */
 
-import { MetodoPago } from './MetodoPago.ts';
+import { PaymentMethod } from './MetodoPago.ts';
 
-export class PagoTarjeta extends MetodoPago {
+export class CardPayment extends PaymentMethod {
   private readonly pin: string;
 
   /** 
-   * @desc Inicializa el pago con tarjeta
-   * @param pin PIN de la tarjeta
+   * @desc Initializes a card payment
+   * @param pin Card PIN
    */
   constructor(pin: string) {
     super();
@@ -24,10 +26,10 @@ export class PagoTarjeta extends MetodoPago {
   }
 
   /** 
-   * @desc Ejecuta el pago con tarjeta
-   * @return void
+   * @desc Executes the card payment
    */
-  public procesarPago(): void {
-    console.log(`Pago con tarjeta realizado, PIN: ${this.pin}`);
+  processPayment(): void {
+    console.log(`Payment by card completed, PIN: ${this.pin}`);
   }
 }
+

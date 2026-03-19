@@ -2,107 +2,128 @@
  * Universidad de La Laguna
  * Escuela Superior de Ingeniería y Tecnología
  * Grado en Ingeniería Informática
- * Programación de Aplicaciones Interactivas 2025-2026
+ * Programación de Aplicaciones Interactivas 2025-2026ogramming 2025-2026
  *
+ * @author Saúl Lorenzo Armas
+ * @author Sergio Rosales Calzadilla
  * @author Keran Miranda González
  * @since Mar 13 2026
- * @desc Calculadora gigante sin aplicar patrón estrategia, con muchas operaciones diferentes
+ * @desc Large calculator without applying Strategy pattern, with many different operations
  */
 
 import * as readlineSync from 'readline-sync';
 
-class Calculadora {
+class Calculator {
 
   /** 
-   * @desc Ejecuta la operación solicitada por el usuario
-   * @param operacion Tipo de operación a realizar
-   * @param valor1 Primer valor
-   * @param valor2 Segundo valor (opcional según operación)
-   * @return Resultado de la operación como number o string en caso de error
+   * @desc Executes the operation requested by the user
+   * @param operation Type of operation to perform
+   * @param value1 First value
+   * @param value2 Second value (optional depending on operation)
+   * @return Result of the operation as number or string in case of error
    */
-  public ejecutarOperacion(operacion: string, valor1: number, valor2: number = 0): number | string {
-    let resultado: number | string = 0;
-    switch (operacion) {
-      case 'suma':
-        resultado = valor1 + valor2;
+  executeOperation(operation: string, value1: number, value2: number = 0): number | string {
+    let result: number | string = 0;
+
+    switch (operation) {
+      case 'sum':
+        result = value1 + value2;
         break;
-      case 'resta':
-        resultado = valor1 - valor2;
+
+      case 'subtract':
+        result = value1 - value2;
         break;
-      case 'multiplicacion':
-        resultado = valor1 * valor2;
+
+      case 'multiply':
+        result = value1 * value2;
         break;
-      case 'division':
-        if (valor2 === 0) {
-          resultado = 'Error: división por cero';
+
+      case 'divide':
+        if (value2 === 0) {
+          result = 'Error: division by zero';
         } else {
-          resultado = valor1 / valor2;
+          result = value1 / value2;
         }
         break;
-      case 'potencia':
-        resultado = Math.pow(valor1, valor2);
+
+      case 'power':
+        result = Math.pow(value1, value2);
         break;
-      case 'raiz':
-        if (valor1 < 0) {
-          resultado = 'Error: raíz de número negativo';
+
+      case 'sqrt':
+        if (value1 < 0) {
+          result = 'Error: square root of negative number';
         } else {
-          resultado = Math.sqrt(valor1);
+          result = Math.sqrt(value1);
         }
         break;
-      case 'logaritmo':
-        if (valor1 <= 0) {
-          resultado = 'Error: logaritmo de número no positivo';
+
+      case 'log':
+        if (value1 <= 0) {
+          result = 'Error: logarithm of non-positive number';
         } else {
-          resultado = Math.log(valor1);
+          result = Math.log(value1);
         }
         break;
-      case 'modulo':
-        if (valor2 === 0) {
-          resultado = 'Error: módulo por cero';
+
+      case 'mod':
+        if (value2 === 0) {
+          result = 'Error: modulo by zero';
         } else {
-          resultado = valor1 % valor2;
+          result = value1 % value2;
         }
         break;
+
       case 'factorial':
-        if (valor1 < 0) {
-          resultado = 'Error: factorial de número negativo';
+        if (value1 < 0) {
+          result = 'Error: factorial of negative number';
         } else {
           let factorial: number = 1;
-          for (let iterador: number = 2; iterador <= valor1; iterador++) {
-            factorial *= iterador;
+          for (let i: number = 2; i <= value1; i++) {
+            factorial *= i;
           }
-          resultado = factorial;
+          result = factorial;
         }
         break;
-      case 'seno':
-        resultado = Math.sin(valor1);
+
+      case 'sin':
+        result = Math.sin(value1);
         break;
-      case 'coseno':
-        resultado = Math.cos(valor1);
+
+      case 'cos':
+        result = Math.cos(value1);
         break;
-      case 'tangente':
-        resultado = Math.tan(valor1);
+
+      case 'tan':
+        result = Math.tan(value1);
         break;
+
       default:
-        resultado = 'Operación no válida';
+        result = 'Invalid operation';
         break;
     }
-    return resultado;
+
+    return result;
   }
 }
 
 function main(): void {
-  const calculadora: Calculadora = new Calculadora();
-  console.log('Bienvenido a la calculadora gigante');
-  console.log('Operaciones disponibles: suma, resta, multiplicacion, division, potencia, raiz, logaritmo, modulo, factorial, seno, coseno, tangente');
-  const operacion: string = readlineSync.question('Introduce la operación que quieres realizar: ');
-  const valor1: number = Number(readlineSync.question('Introduce el primer valor: '));
-  let valor2: number = 0;
-  if (['suma', 'resta', 'multiplicacion', 'division', 'potencia', 'modulo'].includes(operacion)) {
-    valor2 = Number(readlineSync.question('Introduce el segundo valor: '));
+  const calculator: Calculator = new Calculator();
+
+  console.log('Welcome to the large calculator');
+  console.log('Available operations: sum, subtract, multiply, divide, power, sqrt, log, mod, factorial, sin, cos, tan');
+
+  const operation: string = readlineSync.question('Enter the operation you want to perform: ');
+  const value1: number = Number(readlineSync.question('Enter the first value: '));
+
+  let value2: number = 0;
+  if (['sum', 'subtract', 'multiply', 'divide', 'power', 'mod'].includes(operation)) {
+    value2 = Number(readlineSync.question('Enter the second value: '));
   }
-  const resultado: number | string = calculadora.ejecutarOperacion(operacion, valor1, valor2);
-  console.log(`Resultado: ${resultado}`);
+
+  const result: number | string = calculator.executeOperation(operation, value1, value2);
+  console.log(`Result: ${result}`);
 }
 
 main();
+

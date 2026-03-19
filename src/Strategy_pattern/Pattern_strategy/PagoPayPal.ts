@@ -4,17 +4,21 @@
  * Grado en Ingeniería Informática
  * Programación de Aplicaciones Interactivas 2025-2026
  *
- * @desc Implementación de pago con PayPal
+ * @author Saúl Lorenzo Armas
+ * @author Sergio Rosales Calzadilla
+ * @author Keran Miranda González
+ * @since Mar 13 2026
+ * @desc Implementation of PayPal payment
  */
 
-import { MetodoPago } from './MetodoPago.ts';
+import { PaymentMethod } from './MetodoPago.ts';
 
-export class PagoPaypal extends MetodoPago {
+export class PaypalPayment extends PaymentMethod {
   private readonly email: string;
 
   /** 
-   * @desc Inicializa el pago con PayPal
-   * @param email Correo de la cuenta PayPal
+   * @desc Initializes a PayPal payment
+   * @param email PayPal account email
    */
   constructor(email: string) {
     super();
@@ -22,10 +26,10 @@ export class PagoPaypal extends MetodoPago {
   }
 
   /** 
-   * @desc Ejecuta el pago con PayPal
-   * @return void
+   * @desc Executes the PayPal payment
    */
-  public procesarPago(): void {
-    console.log(`Pago con PayPal realizado, correo: ${this.email}`);
+  processPayment(): void {
+    console.log(`Payment via PayPal completed, email: ${this.email}`);
   }
 }
+

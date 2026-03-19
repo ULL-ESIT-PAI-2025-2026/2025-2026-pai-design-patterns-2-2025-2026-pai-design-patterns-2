@@ -4,15 +4,17 @@
  * Grado en Ingeniería Informática
  * Programación de Aplicaciones Interactivas 2025-2026
  *
+ * @author Saúl Lorenzo Armas
+ * @author Sergio Rosales Calzadilla
  * @author Keran Miranda González
  * @since Mar 13 2026
- * @desc Clase abstracta que representa un método de pago
+ * @desc Abstract class representing a payment method
  */
 
-export abstract class MetodoPago {
+export abstract class PaymentMethod {
   /** 
-   * @desc Ejecuta el pago según el método implementado
-   * @return void
+   * @desc Executes the payment according to the implemented method
    */
-  public abstract procesarPago(): void;
+  abstract processPayment(): void;
 }
+

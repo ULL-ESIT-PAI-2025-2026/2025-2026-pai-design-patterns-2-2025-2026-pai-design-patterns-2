@@ -4,95 +4,110 @@
  * Grado en Ingeniería Informática
  * Programación de Aplicaciones Interactivas 2025-2026
  *
+ * @author Saúl Lorenzo Armas
+ * @author Sergio Rosales Calzadilla
  * @author Keran Miranda González
  * @since Mar 13 2026
- * @desc Zombies complejos sin usar patrón Prototype
+ * @desc Complex zombies without using Prototype pattern
  */
 
 import * as readlineSync from 'readline-sync';
 
-type Posicion = { x: number, y: number };
-type Item = { nombre: string, cantidad: number };
-type Efecto = { tipo: string, duracion: number };
+type Position = { x: number, y: number };
+type Item = { name: string, quantity: number };
+type Effect = { type: string, duration: number };
 
 class Zombie {
-  private nombre: string;
-  private vida: number;
-  private ataque: number;
-  private velocidad: number;
-  private resistencia: number;
-  private habilidades: string[];
-  private inventario: Item[];
-  private efectos: Efecto[];
-  private posicion: Posicion;
+  private name: string;
+  private health: number;
+  private attack: number;
+  private speed: number;
+  private resistance: number;
+  private abilities: string[];
+  private inventory: Item[];
+  private effects: Effect[];
+  private position: Position;
 
   constructor(
-    nombre: string,
-    vida: number,
-    ataque: number,
-    velocidad: number,
-    resistencia: number,
-    habilidades: string[],
-    inventario: Item[],
-    efectos: Efecto[],
-    posicion: Posicion
+    name: string,
+    health: number,
+    attack: number,
+    speed: number,
+    resistance: number,
+    abilities: string[],
+    inventory: Item[],
+    effects: Effect[],
+    position: Position
   ) {
-    this.nombre = nombre;
-    this.vida = vida;
-    this.ataque = ataque;
-    this.velocidad = velocidad;
-    this.resistencia = resistencia;
-    this.habilidades = habilidades;
-    this.inventario = inventario;
-    this.efectos = efectos;
-    this.posicion = posicion;
+    this.name = name;
+    this.health = health;
+    this.attack = attack;
+    this.speed = speed;
+    this.resistance = resistance;
+    this.abilities = abilities;
+    this.inventory = inventory;
+    this.effects = effects;
+    this.position = position;
   }
 
-  public recibirDaño(daño: number): void {
-    this.vida -= daño;
-    if (this.vida < 0) this.vida = 0;
+  receiveDamage(damage: number): void {
+    this.health -= damage;
+    if (this.health < 0) this.health = 0;
   }
 
-  public getNombre(): string { return this.nombre; }
-  public setNombre(nuevoNombre: string): void { this.nombre = nuevoNombre; }
+  getName(): string { return this.name; }
+  setName(newName: string): void { this.name = newName; }
 
-  public toString(): string {
-    return `${this.nombre} | Vida: ${this.vida}, Ataque: ${this.ataque}, Velocidad: ${this.velocidad}, ` +
-           `Habilidades: [${this.habilidades.join(', ')}], Inventario: [${this.inventario.map(i => i.nombre).join(', ')}], ` +
-           `Efectos: [${this.efectos.map(e => e.tipo).join(', ')}], Posicion: (${this.posicion.x},${this.posicion.y})`;
+  toString(): string {
+    return `${this.name} | Health: ${this.health}, Attack: ${this.attack}, Speed: ${this.speed}, ` +
+           `Abilities: [${this.abilities.join(', ')}], Inventory: [${this.inventory.map(i => i.name).join(', ')}], ` +
+           `Effects: [${this.effects.map(e => e.type).join(', ')}], Position: (${this.position.x},${this.position.y})`;
   }
 }
 
 function main(): void {
   const zombies: Zombie[] = [];
-  let turno: number = 1;
+  let turn: number = 1;
+
   while (true) {
-    console.log(`\n--- Turno ${turno} ---`);
-    const nuevoZombie: Zombie = new Zombie(
-      `Zombie${turno}`,
+    console.log(`\n--- Turn ${turn} ---`);
+
+    const newZombie: Zombie = new Zombie(
+      `Zombie${turn}`,
       100,
       10,
       5,
       3,
-      ['morder', 'correr'],
-      [{ nombre: 'cráneo', cantidad: 1 }],
+      ['bite', 'run'],
+      [{ name: 'skull', quantity: 1 }],
       [],
-      { x: turno, y: turno }
+      { x: turn, y: turn }
     );
-    zombies.push(nuevoZombie);
-    console.log(`Ha aparecido un nuevo zombie: ${nuevoZombie.toString()}`);
-    zombies.forEach((zombie, idx) => console.log(`${idx + 1}: ${zombie.toString()}`));
-    const accion: string = readlineSync.question('Elige acción (atacar/salir): ');
-    if (accion === 'salir') break;
-    if (accion === 'atacar') {
-      const idxAtacar: number = Number(readlineSync.question('Elige número de zombie a atacar: ')) - 1;
-      if (idxAtacar >= 0 && idxAtacar < zombies.length) {
-        zombies[idxAtacar].recibirDaño(30);
-        console.log(`Atacaste al ${zombies[idxAtacar].toString()}`);
-      } else console.log('Número inválido');
+
+    zombies.push(newZombie);
+
+    console.log(`A new zombie has appeared: ${newZombie.toString()}`);
+    zombies.forEach((zombie, idx) =>
+      console.log(`${idx + 1}: ${zombie.toString()}`)
+    );
+
+    const action: string = readlineSync.question('Choose action (attack/exit): ');
+
+    if (action === 'exit') break;
+
+    if (action === 'attack') {
+      const idxToAttack: number =
+        Number(readlineSync.question('Choose zombie number to attack: ')) - 1;
+
+      if (idxToAttack >= 0 && idxToAttack < zombies.length) {
+        zombies[idxToAttack].receiveDamage(30);
+        console.log(`You attacked ${zombies[idxToAttack].toString()}`);
+      } else console.log('Invalid number');
     }
-    turno++;
+
+    turn++;
   }
 }
 
 main();
+

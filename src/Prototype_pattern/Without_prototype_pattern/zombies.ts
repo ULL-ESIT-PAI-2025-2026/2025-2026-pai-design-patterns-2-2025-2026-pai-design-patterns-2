@@ -4,88 +4,99 @@
  * Grado en Ingeniería Informática
  * Programación de Aplicaciones Interactivas 2025-2026
  *
+ * @author Saúl Lorenzo Armas
+ * @author Sergio Rosales Calzadilla
  * @author Keran Miranda González
  * @since Mar 13 2026
- * @desc Simulación de zombies sin usar patrón Prototype
+ * @desc Zombie simulation without using Prototype pattern
  */
 
 import * as readlineSync from 'readline-sync';
 
 class Zombie {
-  private nombre: string;
-  private vida: number;
-  private ataque: number;
+  private name: string;
+  private health: number;
+  private attack: number;
 
   /**
-   * @desc Crea un nuevo zombie
-   * @param nombre Nombre del zombie
-   * @param vida Vida inicial
-   * @param ataque Valor de ataque
+   * @desc Creates a new zombie
+   * @param name Zombie name
+   * @param health Initial health
+   * @param attack Attack value
    */
-  constructor(nombre: string, vida: number, ataque: number) {
-    this.nombre = nombre;
-    this.vida = vida;
-    this.ataque = ataque;
+  constructor(name: string, health: number, attack: number) {
+    this.name = name;
+    this.health = health;
+    this.attack = attack;
   }
 
   /**
-   * @desc Disminuye la vida del zombie
-   * @param daño Cantidad de daño a aplicar
-   * @return void
+   * @desc Reduces the zombie's health
+   * @param damage Amount of damage to apply
    */
-  public recibirDaño(daño: number): void {
-    this.vida -= daño;
-    if (this.vida < 0) {
-      this.vida = 0;
+  receiveDamage(damage: number): void {
+    this.health -= damage;
+    if (this.health < 0) {
+      this.health = 0;
     }
   }
 
   /**
-   * @desc Devuelve la vida del zombie
-   * @return Vida actual
+   * @desc Returns the zombie's health
+   * @return Current health
    */
-  public getVida(): number {
-    return this.vida;
+  getHealth(): number {
+    return this.health;
   }
 
   /**
-   * @desc Devuelve una representación en string del zombie
-   * @return String con nombre y vida
+   * @desc Returns a string representation of the zombie
+   * @return String with name and health
    */
-  public toString(): string {
-    return `${this.nombre} (Vida: ${this.vida})`;
+  toString(): string {
+    return `${this.name} (Health: ${this.health})`;
   }
 }
 
 function main(): void {
   const zombies: Zombie[] = [];
-  let turno: number = 1;
+  let turn: number = 1;
+
   while (true) {
-    console.log(`\n--- Turno ${turno} ---`);
-    const nuevoZombie: Zombie = new Zombie(`Zombie${turno}`, 100, 10);
-    zombies.push(nuevoZombie);
-    console.log(`Ha aparecido un nuevo zombie: ${nuevoZombie.toString()}`);
-    console.log('Zombies actuales:');
-    zombies.forEach((zombie, indice) => {
-      console.log(`${indice + 1}: ${zombie.toString()}`);
+    console.log(`\n--- Turn ${turn} ---`);
+
+    const newZombie: Zombie = new Zombie(`Zombie${turn}`, 100, 10);
+    zombies.push(newZombie);
+
+    console.log(`A new zombie has appeared: ${newZombie.toString()}`);
+    console.log('Current zombies:');
+
+    zombies.forEach((zombie, index) => {
+      console.log(`${index + 1}: ${zombie.toString()}`);
     });
-    const accion: string = readlineSync.question('Elige acción (atacar/salir): ');
-    if (accion === 'salir') {
-      console.log('Saliendo del juego...');
+
+    const action: string = readlineSync.question('Choose action (attack/exit): ');
+
+    if (action === 'exit') {
+      console.log('Exiting the game...');
       break;
-    } else if (accion === 'atacar') {
-      const indiceAtacar: number = Number(readlineSync.question('Elige número de zombie a atacar: ')) - 1;
-      if (indiceAtacar >= 0 && indiceAtacar < zombies.length) {
-        zombies[indiceAtacar].recibirDaño(30);
-        console.log(`Atacaste al ${zombies[indiceAtacar].toString()}`);
+    } else if (action === 'attack') {
+      const indexToAttack: number =
+        Number(readlineSync.question('Choose zombie number to attack: ')) - 1;
+
+      if (indexToAttack >= 0 && indexToAttack < zombies.length) {
+        zombies[indexToAttack].receiveDamage(30);
+        console.log(`You attacked ${zombies[indexToAttack].toString()}`);
       } else {
-        console.log('Número de zombie inválido');
+        console.log('Invalid zombie number');
       }
     } else {
-      console.log('Acción no válida');
+      console.log('Invalid action');
     }
-    turno++;
+
+    turn++;
   }
 }
 
 main();
+

@@ -5,106 +5,117 @@
  * Programación de Aplicaciones Interactivas 2025-2026
  *
  * @author Keran Miranda González
+ * @author Saúl Lorenzo Armas
+ * @author Sergio Rosales Calzadilla
  * @since Mar 13 2026
- * @desc Simulación de zombies usando patrón Prototype
+ * @desc Zombie simulation using Prototype pattern
  */
 
 import * as readlineSync from 'readline-sync';
 
 abstract class ZombiePrototype {
-  protected nombre: string;
-  protected vida: number;
-  protected ataque: number;
+  protected name: string;
+  protected health: number;
+  protected attack: number;
 
   /**
-   * @desc Crea un clon del zombie
-   * @return ZombiePrototype Clon del zombie
+   * @desc Creates a clone of the zombie
+   * @return ZombiePrototype Zombie clone
    */
-  public abstract clone(): ZombiePrototype;
+  abstract clone(): ZombiePrototype;
 
   /**
-   * @desc Disminuye la vida del zombie
-   * @param daño Cantidad de daño a aplicar
-   * @return void
+   * @desc Reduces the zombie's health
+   * @param damage Amount of damage to apply
    */
-  public recibirDaño(daño: number): void {
-    this.vida -= daño;
-    if (this.vida < 0) this.vida = 0;
+  receiveDamage(damage: number): void {
+    this.health -= damage;
+    if (this.health < 0) this.health = 0;
   }
 
   /**
-   * @desc Devuelve una representación del zombie
-   * @return string con nombre y vida
+   * @desc Returns a string representation of the zombie
+   * @return string with name and health
    */
-  public toString(): string {
-    return `${this.nombre} (Vida: ${this.vida})`;
+  toString(): string {
+    return `${this.name} (Health: ${this.health})`;
   }
 }
 
 class Zombie extends ZombiePrototype {
 
   /**
-   * @desc Inicializa un zombie con nombre, vida y ataque
-   * @param nombre Nombre del zombie
-   * @param vida Vida inicial
-   * @param ataque Ataque del zombie
+   * @desc Initializes a zombie with name, health and attack
+   * @param name Zombie name
+   * @param health Initial health
+   * @param attack Zombie attack
    */
-  constructor(nombre: string, vida: number, ataque: number) {
+  constructor(name: string, health: number, attack: number) {
     super();
-    this.nombre = nombre;
-    this.vida = vida;
-    this.ataque = ataque;
+    this.name = name;
+    this.health = health;
+    this.attack = attack;
   }
 
   /**
-   * @desc Clona el zombie actual
-   * @return ZombiePrototype Clon del zombie
+   * @desc Clones the current zombie
+   * @return ZombiePrototype Zombie clone
    */
-  public clone(): ZombiePrototype {
-    // Creamos un nuevo zombie con los mismos atributos
-    return new Zombie(this.nombre, this.vida, this.ataque);
+  clone(): ZombiePrototype {
+    return new Zombie(this.name, this.health, this.attack);
   }
 
   /**
-   * @desc Cambia el nombre del zombie
-   * @param nuevoNombre Nuevo nombre
+   * @desc Changes the zombie's name
+   * @param newName New name
    */
-  public setNombre(nuevoNombre: string): void {
-    this.nombre = nuevoNombre;
+  setName(newName: string): void {
+    this.name = newName;
   }
 }
 
 function main(): void {
   const zombies: ZombiePrototype[] = [];
-  const zombieBase: Zombie = new Zombie('ZombieBase', 100, 10);
-  let turno: number = 1;
+  const baseZombie: Zombie = new Zombie('BaseZombie', 100, 10);
+  let turn: number = 1;
+
   while (true) {
-    console.log(`\n--- Turno ${turno} ---`);
-    const nuevoZombie: ZombiePrototype = zombieBase.clone();
-    (nuevoZombie as Zombie).setNombre(`Zombie${turno}`);
-    zombies.push(nuevoZombie);
-    console.log(`Ha aparecido un nuevo zombie: ${nuevoZombie.toString()}`);
-    console.log('Zombies actuales:');
-    zombies.forEach((zombie, indice) => {
-      console.log(`${indice + 1}: ${zombie.toString()}`);
+    console.log(`\n--- Turn ${turn} ---`);
+
+    const newZombie: ZombiePrototype = baseZombie.clone();
+    (newZombie as Zombie).setName(`Zombie${turn}`);
+    zombies.push(newZombie);
+
+    console.log(`A new zombie has appeared: ${newZombie.toString()}`);
+    console.log('Current zombies:');
+
+    zombies.forEach((zombie, index) => {
+      console.log(`${index + 1}: ${zombie.toString()}`);
     });
-    const accion: string = readlineSync.question('Elige acción (atacar/salir): ');
-    if (accion === 'salir') {
-      console.log('Saliendo del juego...');
+
+    const action: string = readlineSync.question('Choose action (attack/exit): ');
+
+    if (action === 'exit') {
+      console.log('Exiting the game...');
       break;
-    } else if (accion === 'atacar') {
-      const indiceAtacar: number = Number(readlineSync.question('Elige número de zombie a atacar: ')) - 1;
-      if (indiceAtacar >= 0 && indiceAtacar < zombies.length) {
-        zombies[indiceAtacar].recibirDaño(30);
-        console.log(`Atacaste al ${zombies[indiceAtacar].toString()}`);
+    } else if (action === 'attack') {
+      const indexToAttack: number = Number(
+        readlineSync.question('Choose zombie number to attack: ')
+      ) - 1;
+
+      if (indexToAttack >= 0 && indexToAttack < zombies.length) {
+        zombies[indexToAttack].receiveDamage(30);
+        console.log(`You attacked ${zombies[indexToAttack].toString()}`);
       } else {
-        console.log('Número de zombie inválido');
+        console.log('Invalid zombie number');
       }
     } else {
-      console.log('Acción no válida');
+      console.log('Invalid action');
     }
-    turno++;
+
+    turn++;
   }
 }
 
 main();
+

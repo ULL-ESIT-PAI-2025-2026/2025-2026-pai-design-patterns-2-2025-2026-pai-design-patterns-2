@@ -3,39 +3,51 @@
  * Escuela Superior de Ingeniería y Tecnología
  * Grado en Ingeniería Informática
  * Programación de Aplicaciones Interactivas 2025-2026
- *
- * @desc Entrada principal que pide datos al usuario y ejecuta el pago
+ * 
+ * @author Saúl Lorenzo Armas
+ * @author Sergio Rosales Calzadilla
+ * @author Keran Miranda González
+ * @desc Main entry that asks the user for data and executes the payment
  */
 
 import * as readlineSync from 'readline-sync';
 
-import { MetodoPago } from './MetodoPago.ts';
-import { PagoTarjeta } from './PagoTarjeta.ts';
-import { PagoPaypal } from './PagoPayPal.ts';
-import { PagoEfectivo } from './PagoEfectivo.ts';
-import { SistemaPagos } from './SistemaPagos.ts';
+import { PaymentMethod } from './MetodoPago.ts';
+import { CardPayment } from './PagoTarjeta.ts';
+import { PaypalPayment } from './PagoPayPal.ts';
+import { CashPayment } from './PagoEfectivo.ts';
+import { PaymentSystem } from './SistemaPagos.ts';
 
 function main(): void {
-  const metodoUsuario: string = readlineSync.question('Elige método de pago (tarjeta/paypal/efectivo): ');
-  let pagoUsuario: MetodoPago;
-  switch (metodoUsuario) {
-    case 'tarjeta':
-      const pinTarjeta: string = readlineSync.question('Introduce el PIN de la tarjeta: ');
-      pagoUsuario = new PagoTarjeta(pinTarjeta);
+  const userMethod: string = readlineSync.question(
+    'Choose payment method (card/paypal/cash): '
+  );
+
+  let userPayment: PaymentMethod;
+
+  switch (userMethod) {
+    case 'card':
+      const cardPin: string = readlineSync.question('Enter card PIN: ');
+      userPayment = new CardPayment(cardPin);
       break;
+
     case 'paypal':
-      const emailPaypal: string = readlineSync.question('Introduce el correo de PayPal: ');
-      pagoUsuario = new PagoPaypal(emailPaypal);
+      const paypalEmail: string = readlineSync.question('Enter PayPal email: ');
+      userPayment = new PaypalPayment(paypalEmail);
       break;
-    case 'efectivo':
-      pagoUsuario = new PagoEfectivo();
+
+    case 'cash':
+      userPayment = new CashPayment();
       break;
+
     default:
-      console.log('Método de pago no válido');
+      console.log('Invalid payment method');
       return;
   }
-  const sistema: SistemaPagos = new SistemaPagos(pagoUsuario);
-  sistema.procesarPago();
+
+  const system: PaymentSystem = new PaymentSystem(userPayment);
+  system.processPayment();
 }
 
 main();
+

@@ -4,44 +4,48 @@
  * Grado en Ingeniería Informática
  * Programación de Aplicaciones Interactivas 2025-2026
  *
+ * @author Saúl Lorenzo Armas
+ * @author Sergio Rosales Calzadilla
  * @author Keran Miranda González
  * @since Mar 13 2026
- * @desc Payment system example without Strategy pattern, using switch in a single class and input from user
+ * @desc Payment system example without Strategy pattern, using switch in a single class and user input
  */
 
 import * as readlineSync from 'readline-sync';
 
-export class SistemaPagos {
+export class PaymentSystem {
 
-  private metodoPago: string;
+  private paymentMethod: string;
 
   /** 
    * @desc Initializes the payment system with a chosen payment method
-   * @param metodoPago Payment method selected by the user
+   * @param paymentMethod Payment method selected by the user
    */
-  constructor(metodoPago: string) {
-    this.metodoPago = metodoPago;
+  constructor(paymentMethod: string) {
+    this.paymentMethod = paymentMethod;
   }
 
   /** 
    * @desc Executes the payment according to the selected method
-   * @return void
    */
-  public procesarPago(): void {
-    switch (this.metodoPago) {
-      case 'tarjeta':
-        const pinTarjeta: string = readlineSync.question('Introduce el PIN de la tarjeta: ');
-        console.log(`Pago con tarjeta realizado, PIN: ${pinTarjeta}`);
+  processPayment(): void {
+    switch (this.paymentMethod) {
+      case 'card':
+        const cardPin: string = readlineSync.question('Enter card PIN: ');
+        console.log(`Payment by card completed, PIN: ${cardPin}`);
         break;
+
       case 'paypal':
-        const emailPaypal: string = readlineSync.question('Introduce el correo de PayPal: ');
-        console.log(`Pago con PayPal realizado, correo: ${emailPaypal}`);
+        const paypalEmail: string = readlineSync.question('Enter PayPal email: ');
+        console.log(`Payment via PayPal completed, email: ${paypalEmail}`);
         break;
-      case 'efectivo':
-        console.log('Pago en efectivo realizado');
+
+      case 'cash':
+        console.log('Cash payment completed');
         break;
+
       default:
-        console.log('Método de pago no válido');
+        console.log('Invalid payment method');
         break;
     }
   }
@@ -49,12 +53,14 @@ export class SistemaPagos {
 
 /** 
  * @desc Main function to execute payment example without Strategy
- * @return void
  */
 export function main(): void {
-  const metodoUsuario: string = readlineSync.question('Elige método de pago (tarjeta/paypal/efectivo): ');
-  const sistema: SistemaPagos = new SistemaPagos(metodoUsuario);
-  sistema.procesarPago();
+  const userMethod: string = readlineSync.question(
+    'Choose payment method (card/paypal/cash): '
+  );
+
+  const system: PaymentSystem = new PaymentSystem(userMethod);
+  system.processPayment();
 }
 
 main();

@@ -4,27 +4,30 @@
  * Grado en Ingeniería Informática
  * Programación de Aplicaciones Interactivas 2025-2026
  *
- * @desc Sistema que procesa pagos usando una estrategia
+ * @author Saúl Lorenzo Armas
+ * @author Sergio Rosales Calzadilla
+ * @author Keran Miranda González
+ * @since Mar 13 2026
+ * @desc System that processes payments using a strategy
  */
 
-import { MetodoPago } from './MetodoPago.ts';
+import { PaymentMethod } from './MetodoPago.ts';
 
-export class SistemaPagos {
-  private metodoPago: MetodoPago;
+export class PaymentSystem {
+  private paymentMethod: PaymentMethod;
 
   /** 
-   * @desc Inicializa el sistema con una estrategia de pago
-   * @param metodoPago Estrategia de pago a usar
+   * @desc Initializes the system with a payment strategy
+   * @param paymentMethod Payment strategy to use
    */
-  constructor(metodoPago: MetodoPago) {
-    this.metodoPago = metodoPago;
+  constructor(paymentMethod: PaymentMethod) {
+    this.paymentMethod = paymentMethod;
   }
 
   /** 
-   * @desc Ejecuta el pago usando la estrategia seleccionada
-   * @return void
+   * @desc Executes the payment using the selected strategy
    */
-  public procesarPago(): void {
-    this.metodoPago.procesarPago();
+  processPayment(): void {
+    this.paymentMethod.processPayment();
   }
 }
