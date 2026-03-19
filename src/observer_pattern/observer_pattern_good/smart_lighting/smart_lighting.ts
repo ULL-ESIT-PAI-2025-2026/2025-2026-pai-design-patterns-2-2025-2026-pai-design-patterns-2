@@ -4,7 +4,9 @@
  * Grado en Ingeniería Informática
  * Programación de Aplicaciones Interactivas 2025-2026
  *
- * @author Sergio Rosales Calzadilla alu010635590@ull.edu.es
+ * @author Saúl Lorenzo Armas
+ * @author Sergio Rosales Calzadilla
+ * @author Keran Miranda González
  * @since Mar 14 2026
  * @desc Implementation of a Light Switch (Subject) and Light Bulbs (Observers).
  */
@@ -12,36 +14,36 @@
 'use strict';
 
 /**
- * @description Interface representing an Observer in the pattern.
+ * Interface representing an Observer in the pattern.
  * Any class that wants to be notified must implement this interface.
  */
 export interface Observer {
   /**
-   * @description Receives an update from the Subject.
+   * Receives an update from the Subject.
    * @param isOn The new state of the circuit (true for ON, false for OFF).
    */
   update(isOn: boolean): void;
 }
 
 /**
- * @description Interface representing a Subject in the pattern.
+ * Interface representing a Subject in the pattern.
  * Defines the basic methods to manage subscribers and notify them.
  */
 export interface Subject {
   /**
-   * @description Attaches an observer to the subject.
+   * Attaches an observer to the subject.
    * @param observer The observer to be attached.
    */
   subscribe(observer: Observer): void;
 
   /**
-   * @description Detaches an observer from the subject.
+   * Detaches an observer from the subject.
    * @param observer The observer to be detached.
    */
   unsubscribe(observer: Observer): void;
 
   /**
-   * @description Notifies all attached observers about an event.
+   * Notifies all attached observers about an event.
    * @param isOn The new state of the circuit to notify about.
    */
   notify(isOn: boolean): void;
@@ -49,7 +51,7 @@ export interface Subject {
 
 
 /**
- * @description Subject representing a smart light switch.
+ * Subject representing a smart light switch.
  * It maintains a list of connected bulbs and notifies them when toggled.
  */
 export class LightSwitch implements Subject {
@@ -58,7 +60,7 @@ export class LightSwitch implements Subject {
   private name: string;
 
   /**
-   * @description Initializes the switch in the OFF state with an empty circuit.
+   * Initializes the switch in the OFF state with an empty circuit.
    * @param name Identifier for the switch (e.g., "Living Room").
    */
   constructor(name: string) {
@@ -68,7 +70,7 @@ export class LightSwitch implements Subject {
   }
 
   /**
-   * @description Attaches a new light bulb (observer) to this switch's circuit.
+   * Attaches a new light bulb (observer) to this switch's circuit.
    * @param observer The light bulb to be connected.
    */
   subscribe(observer: Observer): void {
@@ -78,7 +80,7 @@ export class LightSwitch implements Subject {
   }
 
   /**
-   * @description Detaches a light bulb (observer) from this switch's circuit.
+   * Detaches a light bulb (observer) from this switch's circuit.
    * @param observer The light bulb to be disconnected.
    */
   unsubscribe(observer: Observer): void {
@@ -89,7 +91,7 @@ export class LightSwitch implements Subject {
   }
 
   /**
-   * @description Notifies all connected bulbs about the current power state.
+   * Notifies all connected bulbs about the current power state.
    * @param isOn The current power state to broadcast (true for ON, false for OFF).
    */
   notify(isOn: boolean): void {
@@ -100,7 +102,7 @@ export class LightSwitch implements Subject {
   }
 
   /**
-   * @description Toggles the switch state (ON to OFF, or OFF to ON) and triggers a notification.
+   * Toggles the switch state (ON to OFF, or OFF to ON) and triggers a notification.
    */
   toggle(): void {
     this.isTurnedOn = !this.isTurnedOn;
@@ -110,14 +112,14 @@ export class LightSwitch implements Subject {
 }
 
 /**
- * @description Observer representing a light bulb connected to a switch.
+ * Observer representing a light bulb connected to a switch.
  * It reacts to the power state changes broadcasted by the switch.
  */
 export class LightBulb implements Observer {
   private location: string;
 
   /**
-   * @description Initializes the light bulb with its specific physical location.
+   * Initializes the light bulb with its specific physical location.
    * @param location Where the bulb is installed.
    */
   constructor(location: string) {
@@ -125,7 +127,7 @@ export class LightBulb implements Observer {
   }
 
   /**
-   * @description Reacts to the notification from the LightSwitch, turning the physical bulb on or off.
+   * Reacts to the notification from the LightSwitch, turning the physical bulb on or off.
    * @param isOn The new state of the circuit (true for ON, false for OFF).
    */
   update(isOn: boolean): void {
@@ -137,7 +139,7 @@ export class LightBulb implements Observer {
   }
   
   /**
-   * @description Retrieves the location of the light bulb.
+   * Retrieves the location of the light bulb.
    * @return The string representing the bulb's location.
    */
   getLocation(): string {

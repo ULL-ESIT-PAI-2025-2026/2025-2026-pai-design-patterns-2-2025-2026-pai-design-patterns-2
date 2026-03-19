@@ -4,7 +4,9 @@
  * Grado en Ingeniería Informática
  * Programación de Aplicaciones Interactivas 2025-2026
  *
- * @author Sergio Rosales Calzadilla alu010635590@ull.edu.es
+ * @author Saúl Lorenzo Armas
+ * @author Sergio Rosales Calzadilla
+ * @author Keran Miranda González
  * @since Mar 14 2026
  * @desc Observer Pattern Implementation.
  * Pure implementation where the Subject notifies all its subscribers without 
@@ -14,56 +16,56 @@
 'use strict';
 
 /**
- * @description Interface representing an Observer in the pattern.
+ * Interface representing an Observer in the pattern.
  *     Any class that wants to be notified must implement this interface.
  */
 export interface Observer {
   /**
-   * @description Receives an update from the Subject.
+   * Receives an update from the Subject.
    * @param productName The name of the new product released.
    */
   update(productName: string): void;
 }
 
 /**
- * @description Interface representing a Subject in the pattern.
+ * Interface representing a Subject in the pattern.
  *     Defines the basic methods to manage subscribers and notify them.
  */
 export interface Subject {
   /**
-   * @description Attaches an observer to the subject.
+   * Attaches an observer to the subject.
    * @param observer The observer to be attached.
    */
   subscribe(observer: Observer): void;
 
   /**
-   * @description Detaches an observer from the subject.
+   * Detaches an observer from the subject.
    * @param observer The observer to be detached.
    */
   unsubscribe(observer: Observer): void;
 
   /**
-   * @description Notifies all attached observers about an event.
+   * Notifies all attached observers about an event.
    * @param productName The name of the new product to notify about.
    */
   notify(productName: string): void;
 }
 
 /**
- * @description Concrete implementation of a Subject.
+ * Concrete implementation of a Subject.
  *     Represents a Tennis Store that notifies interested customers about new gear.
  */
 export class TenisStore implements Subject {
   private subscribers: Observer[];
   /**
-   * @description Initializes the TenisStore with an empty list of subscribers.
+   * Initializes the TenisStore with an empty list of subscribers.
    */
   constructor() {
     this.subscribers = [];
   }
 
   /**
-   * @description Adds a new customer to the notification list.
+   * Adds a new customer to the notification list.
    * @param observer The customer who wants to be notified.
    */
   subscribe(observer: Observer): void {
@@ -74,7 +76,7 @@ export class TenisStore implements Subject {
   }
 
   /**
-   * @description Removes a customer from the notification list.
+   * Removes a customer from the notification list.
    * @param observer The customer who no longer wants to be notified.
    */
   unsubscribe(observer: Observer): void {
@@ -85,7 +87,7 @@ export class TenisStore implements Subject {
   }
 
   /**
-   * @description Notifies all actively subscribed customers about a new product.
+   * Notifies all actively subscribed customers about a new product.
    * @param productName The product that has just arrived.
    */
   notify(productName: string): void {
@@ -96,7 +98,7 @@ export class TenisStore implements Subject {
   }
 
   /**
-   * @description Simulates the action of releasing a new product and triggering notifications.
+   * Simulates the action of releasing a new product and triggering notifications.
    * @param productName The name of the product to release.
    */
   releaseNewProduct(productName: string): void {
@@ -106,12 +108,12 @@ export class TenisStore implements Subject {
 }
 
 /**
- * @description Concrete implementation of an Observer.
+ * Concrete implementation of an Observer.
  * Represents a Customer. If they are subscribed, they are interested in the updates.
  */
 export class Customer implements Observer {
   /**
-   * @description Initializes the Customer.
+   * Initializes the Customer.
    * @param name The name of the customer.
    */
   constructor(private name: string) {
@@ -119,7 +121,7 @@ export class Customer implements Observer {
   }
 
   /**
-   * @description Reacts to the notification from the Store.
+   * Reacts to the notification from the Store.
    *     Since the customer is subscribed, we assume they are interested.
    * @param productName The product notified by the Store.
    */
@@ -128,7 +130,7 @@ export class Customer implements Observer {
   }
 
   /**
-   * @description Getter for the customer's name (useful for external logs).
+   * Getter for the customer's name (useful for external logs).
    * @returns The customer's name.
    */
   getName(): string {

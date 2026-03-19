@@ -4,7 +4,9 @@
  * Grado en Ingeniería Informática
  * Programación de Aplicaciones Interactivas 2025-2026
  *
- * @author Sergio Rosales Calzadilla 
+ * @author Saúl Lorenzo Armas
+ * @author Sergio Rosales Calzadilla
+ * @author Keran Miranda González
  * @since Mar 14 2026
  * @desc Execution file demonstrating dynamic rewiring in the Observer Pattern.
  */

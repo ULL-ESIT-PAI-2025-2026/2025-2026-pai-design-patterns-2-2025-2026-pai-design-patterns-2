@@ -4,7 +4,9 @@
  * Grado en Ingeniería Informática
  * Programación de Aplicaciones Interactivas 2025-2026
  *
- * @author Sergio Rosales Calzadilla 
+ * @author Saúl Lorenzo Armas
+ * @author Sergio Rosales Calzadilla
+ * @author Keran Miranda González 
  * @since Mar 14 2026
  * @desc Main execution file for the Observer Pattern simulation.
  */
@@ -14,7 +16,7 @@
 import { TenisStore, Customer } from './tenis_store_and_customers';
 
 /**
- * @description Main function to execute the Observer pattern simulation.
+ * Main function to execute the Observer pattern simulation.
  * It creates a store, some customers, and simulates subscriptions and product releases.
  */
 function main(): void {
