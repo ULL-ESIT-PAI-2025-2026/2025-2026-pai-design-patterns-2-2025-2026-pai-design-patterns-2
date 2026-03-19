@@ -1,3 +1,5 @@
 # Bibliography
 
-Include in this directory all references and additional material used in your project
+Here we have all the references according to our project:
+
+
