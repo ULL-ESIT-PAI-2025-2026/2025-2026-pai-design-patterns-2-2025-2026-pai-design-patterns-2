@@ -23,7 +23,7 @@ export class MarathonCounter {
    * @param data
    * @returns Total number of runners.
    */
-  public solve(data: string[]): number {
+  solve(data: string[]): number {
     if (data.length <= 1) {
       return data.length === 1 ? 1 : 0;
     }
@@ -49,7 +49,7 @@ export class WarehouseInspector {
    * @param data
    * @returns 1 if there is any temperature > 30, 0 otherwise.
    */
-  public solve(data: number[]): number {
+  solve(data: number[]): number {
     if (data.length === 0) {
       return 0;
     }

@@ -24,7 +24,7 @@ abstract class DivideAndConquer {
    * @param {number[] | string[]} data - Data array to process.
    * @returns {number} The result of processing the data.
    */
-  public solve(data: number[] | string[]): number {
+  solve(data: number[] | string[]): number {
     if (this.isBaseCase(data)) {
       return this.solveBaseCase(data);
     }
