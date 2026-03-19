@@ -4,7 +4,9 @@
  * Grado en Ingeniería Informática
  * Programación de Aplicaciones Interactivas 2025-2026
  *
+ * @author Saúl Lorenzo Armas
  * @author Sergio Rosales Calzadilla
+ * @author Keran Miranda González
  * @since Mar 15 2026
  * @desc Execution file demonstrating the Composite Pattern with a car inventory.
  */
@@ -37,10 +39,10 @@ function main(): void {
   myCar.add(spareTire); 
   // The mechanic just wants to know the price. 
   console.log("Querying individual parts:");
-  console.log(`- Price of ${spareTire.getName()}: $${spareTire.getPrice()}`);
-  console.log(`- Price of ${engineSystem.getName()}: $${engineSystem.getPrice()}`);
+  console.log(`- Price of ${spareTire.getName()}: $${spareTire.howMuchItCost()}`);
+  console.log(`- Price of ${engineSystem.getName()}: $${engineSystem.howMuchItCost()}`);
   console.log("\nQuerying the entire car:");
-  console.log(`- Total Price of ${myCar.getName()}: $${myCar.getPrice()}`);
+  console.log(`- Total Price of ${myCar.getName()}: $${myCar.howMuchItCost()}`);
   console.log("\nDetailed Breakdown (Tree Structure):");
   myCar.showDetails();
 }
