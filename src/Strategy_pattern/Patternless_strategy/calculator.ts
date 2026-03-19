@@ -8,10 +8,8 @@
  * @author Sergio Rosales Calzadilla
  * @author Keran Miranda González
  * @since Mar 13 2026
- * Large calculator without applying Strategy pattern, with many different operations
+ * @desc Large calculator without applying Strategy pattern, with many different operations
  */
-
-'use strict';
 
 class Calculator {
   /** 
@@ -106,7 +104,7 @@ class Calculator {
   }
 }
 
-function runCalculator(): void {
+function main(): void {
   const calculator: Calculator = new Calculator();
   console.log('--- STARTING AUTOMATED CALCULATOR TESTS ---');
   const res1 = calculator.executeOperation('sum', 10, 5);
@@ -123,5 +121,5 @@ function runCalculator(): void {
   console.log('Notice how every operation, regardless of its logic, is forced into a single class.');
 }
 
-runCalculator();
+main();
 

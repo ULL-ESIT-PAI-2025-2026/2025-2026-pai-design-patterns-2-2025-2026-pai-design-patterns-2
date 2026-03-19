@@ -11,10 +11,11 @@
  * @desc Execution file demonstrating the Composite Pattern with a car inventory.
  */
 
-'use strict';
-
 import { SimplePart, ComplexAssembly } from './car_component';
 
+/**
+ * @desc Main execution function
+ */
 function main(): void {
   console.log(" --- CAR MECHANIC QUOTATION SYSTEM --- \n");
   // Create simple parts (Leaves)

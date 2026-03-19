@@ -11,39 +11,39 @@
  * @desc Implementation of the Composite Pattern using a Corporate Organization Chart.
  */
 
-'use strict';
+
 
 /** 
- * Represents any person or group in the company. 
- * Both individual workers and managers will implement this.
+ * @desc Represents any person or group in the company. 
+ *     Both individual workers and managers will implement this.
  */
 export interface CompanyMember {
   /**
-   * Calculates and returns the total salary cost.
-   * For a worker, it's just their salary. For a manager, it's their salary + their team's salaries.
+   * @desc Calculates and returns the total salary cost.
+   *     For a worker, it's just their salary. For a manager, it's their salary + their team's salaries.
    * @return The total salary in euros.
    */
   getSalaryCost(): number;
 
   /**
-   * Retrieves the name and role of the member.
+   * @desc Retrieves the name and role of the member.
    * @return A formatted string with name and role.
    */
   getRoleDescription(): string;
 
   /**
-   * Prints the organizational hierarchy from this member downwards.
+   * @desc Prints the organizational hierarchy from this member downwards.
    * @param indentation The string used to format the visual tree.
    */
   showHierarchy(indentation: string): void;
 }
 
 /**
- * Leaf class representing a standard employee with no subordinates.
+ * @desc Leaf class representing a standard employee with no subordinates.
  */
 export class Worker implements CompanyMember {
   /**
-   * Initializes a standard worker.
+   * @desc Initializes a standard worker.
    * @param name The employee's name.
    * @param role The employee's job title.
    * @param salary The employee's individual salary.
@@ -55,7 +55,7 @@ export class Worker implements CompanyMember {
   }
 
   /**
-   * Retrieves the salary cost for this specific worker.
+   * @desc Retrieves the salary cost for this specific worker.
    * @return The individual salary in euros.
    */
   getSalaryCost(): number {
@@ -63,7 +63,7 @@ export class Worker implements CompanyMember {
   }
 
   /**
-   * Retrieves the formatted name and role of the worker.
+   * @desc Retrieves the formatted name and role of the worker.
    * @return A string containing the worker's name and role.
    */
   getRoleDescription(): string {
@@ -71,7 +71,7 @@ export class Worker implements CompanyMember {
   }
 
   /**
-   * Prints the worker's information in the organizational hierarchy.
+   * @desc Prints the worker's information in the organizational hierarchy.
    * @param indentation The string used to format the visual tree. Default is an empty string.
    */
   showHierarchy(indentation: string = ""): void {
@@ -80,13 +80,13 @@ export class Worker implements CompanyMember {
 }
 
 /**
- * Composite class representing a manager who oversees other employees (Workers or other Managers).
+ * @desc Composite class representing a manager who oversees other employees (Workers or other Managers).
  */
 export class Manager implements CompanyMember {
   private subordinates: CompanyMember[];
 
   /**
-   * Initializes a manager with an empty team.
+   * @desc Initializes a manager with an empty team.
    * @param name The manager's name.
    * @param role The manager's job title.
    * @param personalSalary The manager's individual base salary.
@@ -99,7 +99,7 @@ export class Manager implements CompanyMember {
   }
 
   /**
-   * Adds a new member (Worker or Manager) to this manager's team.
+   * @desc Adds a new member (Worker or Manager) to this manager's team.
    * @param member The company member to add as a subordinate.
    */
   addSubordinate(member: CompanyMember): void {
@@ -107,7 +107,7 @@ export class Manager implements CompanyMember {
   }
 
   /**
-   * Removes a subordinate from the team.
+   * @desc Removes a subordinate from the team.
    * @param member The company member to remove.
    */
   removeSubordinate(member: CompanyMember): void {
@@ -118,7 +118,7 @@ export class Manager implements CompanyMember {
   }
 
   /**
-   * Calculates the total salary cost of this manager AND their entire team.
+   * @desc Calculates the total salary cost of this manager AND their entire team.
    * @return The sum of the manager's personal salary plus the recursively calculated salaries of all subordinates.
    */
   getSalaryCost(): number {
@@ -137,7 +137,7 @@ export class Manager implements CompanyMember {
   }
 
   /**
-   * Retrieves the formatted name and role of the manager.
+   * @desc Retrieves the formatted name and role of the manager.
    * @return A string containing the manager's name and role.
    */
   getRoleDescription(): string {
@@ -145,7 +145,7 @@ export class Manager implements CompanyMember {
   }
 
   /**
-   * Prints the manager's information and recursively prints the hierarchy of their entire team.
+   * @desc Prints the manager's information and recursively prints the hierarchy of their entire team.
    * @param indentation The string used to format the visual tree. Default is an empty string.
    */
   showHierarchy(indentation: string = ""): void {

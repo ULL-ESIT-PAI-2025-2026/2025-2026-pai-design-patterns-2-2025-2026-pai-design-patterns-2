@@ -11,12 +11,10 @@
  * @desc Execution file for the BAD DESIGN example.
  */
 
-'use strict';
-
 import { SimplePart, ComplexAssembly } from './car_component_bad';
 
 /**
- * Main execution function
+ * @desc Main execution function
  */
 function main(): void {
   console.log(" --- BAD DESIGN SYSTEM (WITHOUT COMPOSITE) --- \n");

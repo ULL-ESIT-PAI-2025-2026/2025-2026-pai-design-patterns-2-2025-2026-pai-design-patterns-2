@@ -11,15 +11,12 @@
  * @desc Example of different algorithms that solve the same problem without using a common template.
  */
 
-'use strict';
-
 /**
- * @class MarathonCounter
- * @description Counts runners in a marathon.
+ * @desc Counts runners in a marathon.
  */
 export class MarathonCounter {
   /**
-   * Algorithm for counting runners in a marathon using a divide and conquer approach.
+   * @desc Algorithm for counting runners in a marathon using a divide and conquer approach.
    * @param data
    * @returns Total number of runners.
    */
@@ -42,7 +39,7 @@ export class MarathonCounter {
  */
 export class WarehouseInspector {
   /**
-   * Algorithm for inspecting temperatures in a warehouse.
+   * @desc Algorithm for inspecting temperatures in a warehouse.
    * If it detects a temperature > 30 degrees, it triggers an alert (1).
    * @param data
    * @returns 1 if there is any temperature > 30, 0 otherwise.

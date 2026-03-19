@@ -11,8 +11,6 @@
  * @desc main of the Divide and Conquer Template Pattern example. 
  */
 
-'use strict';
-
 import { MarathonCounter, WarehouseInspector } from './different_algorithms';
 
 function main(): void {

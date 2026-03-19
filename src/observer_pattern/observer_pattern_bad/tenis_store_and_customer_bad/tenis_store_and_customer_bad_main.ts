@@ -11,12 +11,10 @@
  * @desc Main execution file for the BAD DESIGN (No Observer Pattern).
  */
 
-'use strict';
-
 import { TenisStore, Customer } from './tenis_store_and_customer_bad';
 
 /**
- * Main function to execute the simulation.
+ * @desc Main function to execute the simulation.
  */
 function main(): void {
   const myTenisStore = new TenisStore();

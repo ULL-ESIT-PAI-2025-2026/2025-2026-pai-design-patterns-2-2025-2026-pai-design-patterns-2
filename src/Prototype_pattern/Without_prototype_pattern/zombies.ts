@@ -8,18 +8,21 @@
  * @author Sergio Rosales Calzadilla
  * @author Keran Miranda González
  * @since Mar 13 2026
- * Zombie simulation without using Prototype pattern
+ * @desc Zombie simulation without using Prototype pattern
  */
 
 import * as readlineSync from 'readline-sync';
 
+/**
+ * @desc Class that represents a current Zombie
+ */
 class Zombie {
   private name: string;
   private health: number;
   private attack: number;
 
   /**
-   * Creates a new zombie
+   * @desc Creates a new zombie
    * @param name Zombie name
    * @param health Initial health
    * @param attack Attack value
@@ -31,7 +34,7 @@ class Zombie {
   }
 
   /**
-   * Reduces the zombie's health
+   * @desc Reduces the zombie's health
    * @param damage Amount of damage to apply
    */
   receiveDamage(damage: number): void {
@@ -42,7 +45,7 @@ class Zombie {
   }
 
   /**
-   * Returns the zombie's health
+   * @desc Returns the zombie's health
    * @return Current health
    */
   getHealth(): number {
@@ -50,7 +53,7 @@ class Zombie {
   }
 
   /**
-   * Returns a string representation of the zombie
+   * @desc Returns a string representation of the zombie
    * @return String with name and health
    */
   toString(): string {
@@ -58,6 +61,10 @@ class Zombie {
   }
 }
 
+/**
+ * @desc Main function of the program
+ * Note: This main doesn't has several code smells, it is all done with educational purpose!!
+ */
 function main(): void {
   const zombies: Zombie[] = [];
   let turn: number = 1;

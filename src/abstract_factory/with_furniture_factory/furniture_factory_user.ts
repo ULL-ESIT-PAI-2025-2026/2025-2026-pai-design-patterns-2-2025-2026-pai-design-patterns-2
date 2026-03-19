@@ -12,13 +12,13 @@
  *       manage furniture products without depending on their concrete classes.
  */
 
-'use strict';
+
 
 import { Chair, Sofa, Table } from './furniture_factory_products';
 import { FurnitureFactory, ModernFurnitureFactory, VictorianFurnitureFactory } from './furniture_factory_factories';
 
 /**
- * The client code works with factories and products only through abstract interfaces. 
+ * @desc The client code works with factories and products only through abstract interfaces. 
  */
 export class FurnitureClient {
   private furnitureFactory: FurnitureFactory;
@@ -27,7 +27,7 @@ export class FurnitureClient {
   private myTables: Table[] = [];
 
   /**
-   * Configures the style of the entire room/order.
+   * @desc Configures the style of the entire room/order.
    * @param userChoice - The style chosen ('Victorian' or 'Modern').
    */
   constructor(private userChoice: string) {
@@ -41,7 +41,7 @@ export class FurnitureClient {
   }
 
   /**
-   * Creates a chair and SAVES it in the internal collection.
+   * @desc Creates a chair and SAVES it in the internal collection.
    * @return The newly created chair.
    */
   addChair(): Chair {
@@ -52,7 +52,7 @@ export class FurnitureClient {
   }
 
   /**
-   * Creates a sofa and SAVES it in the internal collection.
+   * @desc Creates a sofa and SAVES it in the internal collection.
    * @return The newly created sofa.
    */
   addSofa(): Sofa {
@@ -63,7 +63,7 @@ export class FurnitureClient {
   }
 
   /**
-   * Creates a table and SAVES it in the internal collection.
+   * @desc Creates a table and SAVES it in the internal collection.
    * @return The newly created table.
    */
   addTable(): Table {
@@ -74,7 +74,7 @@ export class FurnitureClient {
   }
 
   /**
-   * Demonstrates the use of ALL stored furniture.
+   * @desc Demonstrates the use of ALL stored furniture.
    */
   testAllFurniture(): void {
     console.log(`--- Testing your inventory (${this.myChairs.length} chairs, ${this.mySofas.length} sofas, ${this.myTables.length} tables) ---`);

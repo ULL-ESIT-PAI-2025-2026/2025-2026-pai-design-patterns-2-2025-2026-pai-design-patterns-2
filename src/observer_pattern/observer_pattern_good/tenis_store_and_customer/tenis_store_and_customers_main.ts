@@ -11,12 +11,10 @@
  * @desc Main execution file for the Observer Pattern simulation.
  */
 
-'use strict';
-
 import { TenisStore, Customer } from './tenis_store_and_customers';
 
 /**
- * Main function to execute the Observer pattern simulation.
+ * @desc Main function to execute the Observer pattern simulation.
  * It creates a store, some customers, and simulates subscriptions and product releases.
  */
 function main(): void {

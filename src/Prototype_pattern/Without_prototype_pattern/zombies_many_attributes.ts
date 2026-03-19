@@ -17,6 +17,9 @@ type Position = { x: number, y: number };
 type Item = { name: string, quantity: number };
 type Effect = { type: string, duration: number };
 
+/**
+ * @desc Class to represnt a Zombie with huge amount of attributes
+ */
 class Zombie {
   private name: string;
   private health: number;
@@ -51,7 +54,7 @@ class Zombie {
   }
   
   /**
-   * Reduces the zombie's health
+   * @desc Reduces the zombie's health
    * @param damage Amount of damage to apply
    */
   receiveDamage(damage: number): void {
@@ -59,16 +62,21 @@ class Zombie {
     if (this.health < 0) this.health = 0;
   }
   /**
-   * @return The Zombine name in a string
+   * @desc Getter of the name attribute
+   * @return The Zombie name in a string
    */
   getName(): string { return this.name; }
 
   /**
-   * Set a new zombie name to the actual instance
+   * @desc Set a new zombie name to the actual instance
    * @param newName the name to asign to the zombie
    */
   setName(newName: string): void { this.name = newName; }
 
+  /**
+   * @desc Method to get a string with the zombie atributes
+   * @return A string with all the atributtes of the Zombie
+   */
   toString(): string {
     return `${this.name} | Health: ${this.health}, Attack: ${this.attack}, Speed: ${this.speed}, ` +
            `Abilities: [${this.abilities.join(', ')}], Inventory: [${this.inventory.map(i => i.name).join(', ')}], ` +
@@ -76,13 +84,17 @@ class Zombie {
   }
 }
 
+/**
+ * @desc Main function of the program
+ * Note: This main doesn't has several code smells, it is all done with educational purpose!!
+ */
 function main(): void {
-  const zombies: Zombie[] = [];
-  let turn: number = 1;
+  const zombieList: Zombie[] = [];
+  let currentTurn: number = 1;
   while (true) {
-    console.log(`\n--- Turn ${turn} ---`);
-    const newZombie: Zombie = new Zombie(
-      `Zombie${turn}`,
+    console.log(`\n--- Turn ${currentTurn} ---`);
+    const spawnedZombie: Zombie = new Zombie(
+      `Zombie${currentTurn}`,
       100,
       10,
       5,
@@ -90,25 +102,26 @@ function main(): void {
       ['bite', 'run'],
       [{ name: 'skull', quantity: 1 }],
       [],
-      { x: turn, y: turn }
+      { x: currentTurn, y: currentTurn }
     );
-    zombies.push(newZombie);
-    console.log(`A new zombie has appeared: ${newZombie.toString()}`);
-    zombies.forEach((zombie, idx) =>
-      console.log(`${idx + 1}: ${zombie.toString()}`)
+    zombieList.push(spawnedZombie);
+    console.log(`A new zombie has appeared: ${spawnedZombie.toString()}`);
+    zombieList.forEach((zombie, index) =>
+      console.log(`${index + 1}: ${zombie.toString()}`)
     );
-    const action: string = readlineSync.question('Choose action (attack/exit): ');
-    if (action === 'exit') break;
-    if (action === 'attack') {
-      const idxToAttack: number =
+    const userAction: string = readlineSync.question('Choose action (attack/exit): ');
+    if (userAction === 'exit') break;
+    if (userAction === 'attack') {
+      const targetIndex: number =
         Number(readlineSync.question('Choose zombie number to attack: ')) - 1;
-
-      if (idxToAttack >= 0 && idxToAttack < zombies.length) {
-        zombies[idxToAttack].receiveDamage(30);
-        console.log(`You attacked ${zombies[idxToAttack].toString()}`);
-      } else console.log('Invalid number');
+      if (targetIndex >= 0 && targetIndex < zombieList.length) {
+        zombieList[targetIndex].receiveDamage(30);
+        console.log(`You attacked ${zombieList[targetIndex].toString()}`);
+      } else {
+        console.log('Invalid number');
+      }
     }
-    turn++;
+    currentTurn++;
   }
 }
 

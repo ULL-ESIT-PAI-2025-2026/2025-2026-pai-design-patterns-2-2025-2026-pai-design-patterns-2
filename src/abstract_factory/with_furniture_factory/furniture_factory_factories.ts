@@ -11,13 +11,13 @@
  * @desc Implementation of the factories for the Abstract Factory Pattern applied to a Furniture Factory.
  */
 
-'use strict';
+
 
 import { Chair, Sofa, Table } from './furniture_factory_products';
 import { VictorianChair, ModernChair, VictorianSofa, ModernSofa, VictorianTable, ModernTable } from './furniture_factory_products';
 
 /** 
- * The Abstract Factory interface declares methods for creating abstract products. 
+ * @desc The Abstract Factory interface declares methods for creating abstract products. 
  */
 export interface FurnitureFactory {
   /** 
@@ -35,7 +35,7 @@ export interface FurnitureFactory {
 }
 
 /**
- * Concrete factory that produces Victorian style furniture. 
+ * @desc Concrete factory that produces Victorian style furniture. 
  */
 export class VictorianFurnitureFactory implements FurnitureFactory {
 
@@ -54,7 +54,7 @@ export class VictorianFurnitureFactory implements FurnitureFactory {
 }
 
 /**
- * Concrete factory that produces Modern style furniture.
+ * @desc Concrete factory that produces Modern style furniture.
  */
 export class ModernFurnitureFactory implements FurnitureFactory {
   /** 

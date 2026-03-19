@@ -11,10 +11,11 @@
  * @desc Main of the example of furniture without using the Abstract Factory Pattern.
  */
 
-'use strict';
-
 import { FurnitureClientWithoutFactory } from './furniture_user';
 
+/**
+ * @desc Main execution function
+ */
 function main() {
   const userChoice = 'Victorian';
   const client = new FurnitureClientWithoutFactory();

@@ -13,59 +13,59 @@
  * worrying about their internal logic, and Observers react to every notification.
  */
 
-'use strict';
+
 
 /**
- * Interface representing an Observer in the pattern.
+ * @desc Interface representing an Observer in the pattern.
  *     Any class that wants to be notified must implement this interface.
  */
 export interface Observer {
   /**
-   * Receives an update from the Subject.
+   * @desc Receives an update from the Subject.
    * @param productName The name of the new product released.
    */
   update(productName: string): void;
 }
 
 /**
- * Interface representing a Subject in the pattern.
+ * @desc Interface representing a Subject in the pattern.
  *     Defines the basic methods to manage subscribers and notify them.
  */
 export interface Subject {
   /**
-   * Attaches an observer to the subject.
+   * @desc Attaches an observer to the subject.
    * @param observer The observer to be attached.
    */
   subscribe(observer: Observer): void;
 
   /**
-   * Detaches an observer from the subject.
+   * @desc Detaches an observer from the subject.
    * @param observer The observer to be detached.
    */
   unsubscribe(observer: Observer): void;
 
   /**
-   * Notifies all attached observers about an event.
+   * @desc Notifies all attached observers about an event.
    * @param productName The name of the new product to notify about.
    */
   notify(productName: string): void;
 }
 
 /**
- * Concrete implementation of a Subject.
+ * @desc Concrete implementation of a Subject.
  *     Represents a Tennis Store that notifies interested customers about new gear.
  */
 export class TenisStore implements Subject {
   private subscribers: Observer[];
   /**
-   * Initializes the TenisStore with an empty list of subscribers.
+   * @desc Initializes the TenisStore with an empty list of subscribers.
    */
   constructor() {
     this.subscribers = [];
   }
 
   /**
-   * Adds a new customer to the notification list.
+   * @desc Adds a new customer to the notification list.
    * @param observer The customer who wants to be notified.
    */
   subscribe(observer: Observer): void {
@@ -76,7 +76,7 @@ export class TenisStore implements Subject {
   }
 
   /**
-   * Removes a customer from the notification list.
+   * @desc Removes a customer from the notification list.
    * @param observer The customer who no longer wants to be notified.
    */
   unsubscribe(observer: Observer): void {
@@ -87,7 +87,7 @@ export class TenisStore implements Subject {
   }
 
   /**
-   * Notifies all actively subscribed customers about a new product.
+   * @desc Notifies all actively subscribed customers about a new product.
    * @param productName The product that has just arrived.
    */
   notify(productName: string): void {
@@ -98,7 +98,7 @@ export class TenisStore implements Subject {
   }
 
   /**
-   * Simulates the action of releasing a new product and triggering notifications.
+   * @desc Simulates the action of releasing a new product and triggering notifications.
    * @param productName The name of the product to release.
    */
   releaseNewProduct(productName: string): void {
@@ -108,12 +108,12 @@ export class TenisStore implements Subject {
 }
 
 /**
- * Concrete implementation of an Observer.
+ * @desc Concrete implementation of an Observer.
  * Represents a Customer. If they are subscribed, they are interested in the updates.
  */
 export class Customer implements Observer {
   /**
-   * Initializes the Customer.
+   * @desc Initializes the Customer.
    * @param name The name of the customer.
    */
   constructor(private name: string) {
@@ -121,7 +121,7 @@ export class Customer implements Observer {
   }
 
   /**
-   * Reacts to the notification from the Store.
+   * @desc Reacts to the notification from the Store.
    *     Since the customer is subscribed, we assume they are interested.
    * @param productName The product notified by the Store.
    */
@@ -130,7 +130,7 @@ export class Customer implements Observer {
   }
 
   /**
-   * Getter for the customer's name (useful for external logs).
+   * @desc Getter for the customer's name (useful for external logs).
    * @returns The customer's name.
    */
   getName(): string {

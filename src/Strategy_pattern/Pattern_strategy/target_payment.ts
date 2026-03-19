@@ -8,7 +8,7 @@
  * @author Sergio Rosales Calzadilla
  * @author Keran Miranda González
  * @since Mar 13 2026
- * Implementation of card payment
+ * @desc Implementation of card payment
  */
 
 import { PaymentMethod } from './payment_method.ts';
@@ -17,7 +17,7 @@ export class CardPayment extends PaymentMethod {
   private readonly pin: string;
 
   /** 
-   * Initializes a card payment
+   * @desc Initializes a card payment
    * @param pin Card PIN
    */
   constructor(pin: string) {
@@ -26,7 +26,7 @@ export class CardPayment extends PaymentMethod {
   }
 
   /** 
-   * Executes the card payment
+   * @desc Executes the card payment
    */
   processPayment(): void {
     console.log(`Payment by card completed, PIN: ${this.pin}`);

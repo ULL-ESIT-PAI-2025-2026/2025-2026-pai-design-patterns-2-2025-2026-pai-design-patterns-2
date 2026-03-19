@@ -11,13 +11,11 @@
  * @desc  User interacting with furniture products without using the Abstract Factory Pattern.
  */
 
-'use strict';
-
 import { Chair, ModernChair, ModernSofa, ModernTable, Sofa,
     Table, VictorianChair, VictorianSofa, VictorianTable, } from './furniture_products';
 
 /**
- * Class that simulates a client that creates and manages furniture items without using the Abstract Factory Pattern.
+ * @desc Class that simulates a client that creates and manages furniture items without using the Abstract Factory Pattern.
  */
 export class FurnitureClientWithoutFactory {
   private myChairs: Chair[] = [];
@@ -25,7 +23,7 @@ export class FurnitureClientWithoutFactory {
   private myTables: Table[] = [];
 
   /**
-   * Adds a chair to the client's inventory based on the specified style.
+   * @desc Adds a chair to the client's inventory based on the specified style.
    * @param style The style of the chair to add (e.g., 'Victorian', 'Modern').
    */
   addChair(style: string): void {
@@ -43,7 +41,7 @@ export class FurnitureClientWithoutFactory {
   }
 
   /**
-   * Adds a sofa to the client's inventory based on the specified style.
+   * @desc Adds a sofa to the client's inventory based on the specified style.
    * @param style The style of the sofa to add (e.g., 'Victorian', 'Modern').
    */
   addSofa(style: string): void {
@@ -61,7 +59,7 @@ export class FurnitureClientWithoutFactory {
   }
 
   /**
-   * Adds a table to the client's inventory based on the specified style.
+   * @desc Adds a table to the client's inventory based on the specified style.
    * @param style The style of the table to add (e.g., 'Victorian', 'Modern').
    */
   addTable(style: string): void {
@@ -79,7 +77,7 @@ export class FurnitureClientWithoutFactory {
   }
 
   /**
-   * Demonstrates the use of all stored furniture items in the client's inventory.
+   * @desc Demonstrates the use of all stored furniture items in the client's inventory.
    */
   testAllFurniture(): void {
     const totalFurniture = this.myChairs.length + this.mySofas.length + this.myTables.length;

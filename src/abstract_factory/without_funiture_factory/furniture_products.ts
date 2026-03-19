@@ -11,10 +11,8 @@
  * @desc Definition of the products without using the Abstract Factory Pattern for a Furniture Factory example.
  */
 
-'use strict';
-
 /**
- * Chair product interface.
+ * @desc Chair product interface.
  */
 export interface Chair {
   hasLegs(): boolean;
@@ -22,7 +20,7 @@ export interface Chair {
 }
 
 /**
- * Sofa product interface.
+ * @desc Sofa product interface.
  */
 export interface Sofa {
   isComfortable(): boolean;
@@ -30,7 +28,7 @@ export interface Sofa {
 }
 
 /**
- * Table product interface.
+ * @desc Table product interface.
  */
 export interface Table {
   getSize(): number;
@@ -38,33 +36,33 @@ export interface Table {
 }
 
 /**
- * Victorian chair implementation.
+ * @desc Victorian chair implementation.
  */
 export class VictorianChair implements Chair {
   /**
-   * Checks if the Victorian chair has legs.
+   * @desc Checks if the Victorian chair has legs.
    * @return True, as Victorian chairs typically have legs.
    */
   hasLegs(): boolean { return true; }
 
   /**
-   * Makes the user sit on the Victorian chair.
+   * @desc Makes the user sit on the Victorian chair.
    */
   sitOn(): void { console.log('Sitting in a Victorian chair'); }
 }
 
 /**
- * Modern chair implementation.
+ * @desc Modern chair implementation.
  */
 export class ModernChair implements Chair {
   /**
-   * Checks if the Modern chair has legs.
+   * @desc Checks if the Modern chair has legs.
    * @return False, as Modern chairs typically don't have legs.
    */
   hasLegs(): boolean { return false; }
 
   /**
-   * Makes the user sit on the Modern chair.
+   * @desc Makes the user sit on the Modern chair.
    */
   sitOn(): void { console.log('Sitting in a Modern chair'); }
 }
@@ -74,61 +72,61 @@ export class ModernChair implements Chair {
  */
 export class VictorianSofa implements Sofa {
   /**
-   * Checks if the Victorian sofa is comfortable.
+   * @desc Checks if the Victorian sofa is comfortable.
    * @return True, as Victorian sofas are typically comfortable.
    */
   isComfortable(): boolean { return true; }
 
   /**
-   * Makes the user lie on the Victorian sofa.
+   * @desc Makes the user lie on the Victorian sofa.
    */
   lieOn(): void { console.log('Lying on a Victorian sofa.'); }
 }
 
 /**
- * Modern sofa implementation.
+ * @desc Modern sofa implementation.
  */
 export class ModernSofa implements Sofa {
   /**
-   * Checks if the Modern sofa is comfortable.
+   * @desc Checks if the Modern sofa is comfortable.
    * @return True, as Modern sofas are typically comfortable.
    */
   isComfortable(): boolean { return true; }
 
   /**
-   * Makes the user lie on the Modern sofa.
+   * @desc Makes the user lie on the Modern sofa.
    */
   lieOn(): void { console.log('Lying on a Modern sofa.'); }
 }
 
 /**
- * Victorian table implementation.
+ * @desc Victorian table implementation.
  */
 export class VictorianTable implements Table {
   /**
-   * Gets the size of the Victorian table.
+   * @desc Gets the size of the Victorian table.
    * @return The size of the Victorian table.
    */
   getSize(): number { return 150; }
 
   /**
-   * Places a drink on the Victorian table.
+   * @desc Places a drink on the Victorian table.
    */
   putSomeDrink(): void { console.log('Placing a drink on a Victorian table.'); }
 }
 
 /**
- * Modern table implementation.
+ * @desc Modern table implementation.
  */
 export class ModernTable implements Table {
   /**
-   * Gets the size of the Modern table.
+   * @desc Gets the size of the Modern table.
    * @return The size of the Modern table.
    */
   getSize(): number { return 100; }
 
   /**
-   * Places a drink on the Modern table.
+   * @desc Places a drink on the Modern table.
    */
   putSomeDrink(): void { console.log('Placing a drink on a Modern table.'); }
 }

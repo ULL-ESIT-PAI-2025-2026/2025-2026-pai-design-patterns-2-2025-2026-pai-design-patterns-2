@@ -11,13 +11,16 @@
  * @desc Complex zombies using Prototype pattern
  */
 
-
 import * as readlineSync from 'readline-sync';
 
 type Position = { x: number, y: number };
 type Item = { name: string, quantity: number };
 type Effect = { type: string, duration: number };
 
+
+/**
+ * @desc Class to represent the Prototype pattern with the Zombie game
+ */
 abstract class ZombiePrototype {
   protected name: string;
   protected health: number;
@@ -30,13 +33,13 @@ abstract class ZombiePrototype {
   protected position: Position;
 
   /**
-   * Clones the current zombie
+   * @desc Clones the current zombie
    * @return ZombiePrototype Zombie clone
    */
   abstract clone(): ZombiePrototype;
 
   /**
-   * Reduces the zombie's health
+   * @desc Reduces the zombie's health
    * @param damage Amount of damage to apply
    */
   receiveDamage(damage: number): void {
@@ -45,7 +48,7 @@ abstract class ZombiePrototype {
   }
 
   /**
-   * Changes the zombie's name
+   * @desc Changes the zombie's name
    * @param newName New name
    */
   setName(newName: string): void { this.name = newName; }
@@ -60,6 +63,10 @@ abstract class ZombiePrototype {
   }
 }
 
+
+/**
+ * @desc Class to represent a Zombie
+ */
 class Zombie extends ZombiePrototype {
 
   constructor(
@@ -86,7 +93,7 @@ class Zombie extends ZombiePrototype {
   }
   
   /**
-  * Clones the current zombie
+  * @desc Clones the current zombie
   * @return ZombiePrototype Zombie clone
   */
   clone(): ZombiePrototype {
@@ -106,6 +113,10 @@ class Zombie extends ZombiePrototype {
   setPosition(pos: Position): void { this.position = pos; }
 }
 
+/**
+ * @desc Main function of the program
+ * Note: This main doesn't has several code smells, it is all done with educational purpose!!
+ */
 function main(): void {
   const zombies: ZombiePrototype[] = [];
   const baseZombie: Zombie = new Zombie(
@@ -135,7 +146,6 @@ function main(): void {
     if (action === 'attack') {
       const idxToAttack: number =
         Number(readlineSync.question('Choose zombie number to attack: ')) - 1;
-
       if (idxToAttack >= 0 && idxToAttack < zombies.length) {
         zombies[idxToAttack].receiveDamage(30);
         console.log(`You attacked ${zombies[idxToAttack].toString()}`);

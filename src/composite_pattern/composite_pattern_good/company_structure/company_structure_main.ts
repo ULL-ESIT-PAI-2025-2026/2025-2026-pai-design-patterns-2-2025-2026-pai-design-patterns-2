@@ -9,10 +9,11 @@
  * @desc Execution file demonstrating the Composite Pattern with a corporate hierarchy.
  */
 
-'use strict';
-
 import { Worker, Manager } from './company_structure';
 
+/**
+ * @desc Main execution function
+ */
 function main(): void {
   console.log("--- CORPORATE PAYROLL SYSTEM --- \n");
   // Create Individual Contributors (Leaves)

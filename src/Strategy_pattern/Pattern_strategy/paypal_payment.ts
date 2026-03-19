@@ -8,7 +8,7 @@
  * @author Sergio Rosales Calzadilla
  * @author Keran Miranda González
  * @since Mar 13 2026
- * Implementation of PayPal payment
+ * @desc Implementation of PayPal payment
  */
 
 import { PaymentMethod } from './payment_method.ts';
@@ -17,7 +17,7 @@ export class PaypalPayment extends PaymentMethod {
   private readonly email: string;
 
   /** 
-   * Initializes a PayPal payment
+   * @desc Initializes a PayPal payment
    * @param email PayPal account email
    */
   constructor(email: string) {
@@ -26,7 +26,7 @@ export class PaypalPayment extends PaymentMethod {
   }
 
   /** 
-   * Executes the PayPal payment
+   * @desc Executes the PayPal payment
    */
   processPayment(): void {
     console.log(`Payment via PayPal completed, email: ${this.email}`);

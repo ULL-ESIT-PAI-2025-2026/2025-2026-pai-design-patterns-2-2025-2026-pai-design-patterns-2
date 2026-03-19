@@ -11,8 +11,6 @@
  * @desc Execution file demonstrating dynamic rewiring in the Observer Pattern.
  */
 
-'use strict';
-
 import { LightSwitch, LightBulb } from './smart_lighting';
 
 function main(): void {

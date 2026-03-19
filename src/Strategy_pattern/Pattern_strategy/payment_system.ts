@@ -8,7 +8,7 @@
  * @author Sergio Rosales Calzadilla
  * @author Keran Miranda González
  * @since Mar 13 2026
- * System that processes payments using a strategy
+ * @desc System that processes payments using a strategy
  */
 
 import { PaymentMethod } from './payment_method.ts';
@@ -17,7 +17,7 @@ export class PaymentSystem {
   private paymentMethod: PaymentMethod;
 
   /** 
-   * Initializes the system with a payment strategy
+   * @desc Initializes the system with a payment strategy
    * @param paymentMethod Payment strategy to use
    */
   constructor(paymentMethod: PaymentMethod) {
@@ -25,7 +25,7 @@ export class PaymentSystem {
   }
 
   /** 
-   * Executes the payment using the selected strategy
+   * @desc Executes the payment using the selected strategy
    */
   processPayment(): void {
     this.paymentMethod.processPayment();

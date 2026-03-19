@@ -8,24 +8,27 @@
  * @author Saúl Lorenzo Armas
  * @author Sergio Rosales Calzadilla
  * @since Mar 13 2026
- * Zombie simulation using Prototype pattern
+ * @desc Zombie simulation using Prototype pattern
  */
 
 import * as readlineSync from 'readline-sync';
 
+/**
+ * @desc Class to represent the Prototype pattern with the Zombie game
+ */
 abstract class ZombiePrototype {
   protected name: string;
   protected health: number;
   protected attack: number;
 
   /**
-   * Creates a clone of the zombie
+   * @desc Creates a clone of the zombie
    * @return ZombiePrototype Zombie clone
    */
   abstract clone(): ZombiePrototype;
 
   /**
-   * Reduces the zombie's health
+   * @desc Reduces the zombie's health
    * @param damage Amount of damage to apply
    */ 
   receiveDamage(damage: number): void {
@@ -34,7 +37,7 @@ abstract class ZombiePrototype {
   }
 
   /**
-   * Returns a string representation of the zombie
+   * @desc Returns a string representation of the zombie
    * @return string with name and health
    */
   toString(): string {
@@ -42,9 +45,12 @@ abstract class ZombiePrototype {
   }
 }
 
+/**
+ * @desc Class to represent a Zombie
+ */
 class Zombie extends ZombiePrototype {
   /**
-   * Initializes a zombie with name, health and attack
+   * @desc Initializes a zombie with name, health and attack
    * @param name Zombie name
    * @param health Initial health
    * @param attack Zombie attack
@@ -57,7 +63,7 @@ class Zombie extends ZombiePrototype {
   }
 
   /**
-   * Clones the current zombie
+   * @desc Clones the current zombie
    * @return ZombiePrototype Zombie clone
    */
   clone(): ZombiePrototype {
@@ -65,7 +71,7 @@ class Zombie extends ZombiePrototype {
   }
 
   /**
-   * Changes the zombie's name
+   * @desc Changes the zombie's name
    * @param newName New name
    */
   setName(newName: string): void {
@@ -73,6 +79,10 @@ class Zombie extends ZombiePrototype {
   }
 }
 
+/**
+ * @desc Main function of the program
+ * Note: This main doesn't has several code smells, it is all done with educational purpose!!
+ */
 function main(): void {
   const zombies: ZombiePrototype[] = [];
   const baseZombie: Zombie = new Zombie('BaseZombie', 100, 10);

@@ -8,12 +8,12 @@
  * @author Sergio Rosales Calzadilla
  * @author Keran Miranda González
  * @since Mar 13 2026
- * Abstract class representing a payment method
+ * @desc Abstract class representing a payment method
  */
 
 export abstract class PaymentMethod {
   /** 
-   * Executes the payment according to the implemented method
+   * @desc Executes the payment according to the implemented method
    */
   abstract processPayment(): void;
 }

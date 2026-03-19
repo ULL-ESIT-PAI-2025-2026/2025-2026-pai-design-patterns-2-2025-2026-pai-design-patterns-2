@@ -11,14 +11,12 @@
  * @desc BAD DESIGN: Implementation WITHOUT Composite Pattern. 
  */
 
-'use strict';
-
 /**
- * Class for basic car components
+ * @desc Class for basic car components
  */
 export class SimplePart {
   /**
-   * Initializes a simple part
+   * @desc Initializes a simple part
    */
   constructor(private name: string, private price: number) {
     this.name = name;
@@ -41,35 +39,35 @@ export class SimplePart {
 }
 
 /**
- * Class for grouped car components without common interface
+ * @desc Class for grouped car components without common interface
  */
 export class ComplexAssembly {
   private parts: SimplePart[] = [];
   private subAssemblies: ComplexAssembly[] = [];
 
   /**
-   * Initializes an assembly
+   * @desc Initializes an assembly
    */
   constructor(private name: string) {
     this.name = name;
   }
 
   /**
-   * Adds a simple part to the internal list
+   * @desc Adds a simple part to the internal list
    */
   addPart(part: SimplePart): void {
     this.parts.push(part);
   }
 
   /**
-   * Adds another assembly to the internal list
+   * @desc Adds another assembly to the internal list
    */
   addSubAssembly(assembly: ComplexAssembly): void {
     this.subAssemblies.push(assembly);
   }
 
   /**
-   * Sums prices from all internal lists manually
+   * @desc Sums prices from all internal lists manually
    * @return The total cost
    */
   howMuchItCost(): number {
@@ -84,7 +82,7 @@ export class ComplexAssembly {
   }
 
   /**
-   * Gets the assembly name
+   * @desc Gets the assembly name
    * @return The name string
    */
   getName(): string {
@@ -92,7 +90,7 @@ export class ComplexAssembly {
   }
 
   /**
-   * Prints the structure using specific loops for each type
+   * @desc Prints the structure using specific loops for each type
    */
   showDetails(indentation: string = ""): void {
     console.log(`${indentation}+ ${this.name} (Total: $${this.howMuchItCost()})`);
