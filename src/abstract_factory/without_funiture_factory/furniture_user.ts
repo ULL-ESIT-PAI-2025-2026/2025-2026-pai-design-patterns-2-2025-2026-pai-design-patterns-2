@@ -1,15 +1,3 @@
-import {
-  Chair,
-  ModernChair,
-  ModernSofa,
-  ModernTable,
-  Sofa,
-  Table,
-  VictorianChair,
-  VictorianSofa,
-  VictorianTable,
-} from './furniture_products';
-
 /**
  * Universidad de La Laguna
  * Escuela Superior de Ingeniería y Tecnología
@@ -23,9 +11,13 @@ import {
  * @desc  User interacting with furniture products without using the Abstract Factory Pattern.
  */
 
+'use strict';
+
+import { Chair, ModernChair, ModernSofa, ModernTable, Sofa,
+    Table, VictorianChair, VictorianSofa, VictorianTable, } from './furniture_products';
 
 /**
- * @description class that simulates a client that creates and manages furniture items without using the Abstract Factory Pattern.
+ * Class that simulates a client that creates and manages furniture items without using the Abstract Factory Pattern.
  */
 export class FurnitureClientWithoutFactory {
   private myChairs: Chair[] = [];
@@ -33,8 +25,8 @@ export class FurnitureClientWithoutFactory {
   private myTables: Table[] = [];
 
   /**
-   * @description Adds a chair to the client's inventory based on the specified style.
-   * @param {string} style - The style of the chair to add (e.g., 'Victorian', 'Modern').
+   * Adds a chair to the client's inventory based on the specified style.
+   * @param style The style of the chair to add (e.g., 'Victorian', 'Modern').
    */
   addChair(style: string): void {
     if (style === 'Victorian') {
@@ -51,8 +43,8 @@ export class FurnitureClientWithoutFactory {
   }
 
   /**
-   * @description Adds a sofa to the client's inventory based on the specified style.
-   * @param {string} style - The style of the sofa to add (e.g., 'Victorian', 'Modern').
+   * Adds a sofa to the client's inventory based on the specified style.
+   * @param style The style of the sofa to add (e.g., 'Victorian', 'Modern').
    */
   addSofa(style: string): void {
     if (style === 'Victorian') {
@@ -69,8 +61,8 @@ export class FurnitureClientWithoutFactory {
   }
 
   /**
-   * @description Adds a table to the client's inventory based on the specified style.
-   * @param {string} style - The style of the table to add (e.g., 'Victorian', 'Modern').
+   * Adds a table to the client's inventory based on the specified style.
+   * @param style The style of the table to add (e.g., 'Victorian', 'Modern').
    */
   addTable(style: string): void {
     if (style === 'Victorian') {
@@ -87,8 +79,7 @@ export class FurnitureClientWithoutFactory {
   }
 
   /**
-   * @description Demonstrates the use of all stored furniture items in the client's inventory.
-   * @returns {void}
+   * Demonstrates the use of all stored furniture items in the client's inventory.
    */
   testAllFurniture(): void {
     const totalFurniture = this.myChairs.length + this.mySofas.length + this.myTables.length;

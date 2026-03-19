@@ -1,7 +1,5 @@
-import { FurnitureClientWithoutFactory } from './furniture_user';
-
 /**
- * Universidad de La Laguna
+* Universidad de La Laguna
  * Escuela Superior de Ingeniería y Tecnología
  * Grado en Ingeniería Informática
  * Programación de Aplicaciones Interactivas 2025-2026
@@ -13,14 +11,16 @@ import { FurnitureClientWithoutFactory } from './furniture_user';
  * @desc Main of the example of furniture without using the Abstract Factory Pattern.
  */
 
+'use strict';
+
+import { FurnitureClientWithoutFactory } from './furniture_user';
+
 function main() {
   const userChoice = 'Victorian';
   const client = new FurnitureClientWithoutFactory();
-
   client.addChair(userChoice);
   client.addSofa(userChoice);
   client.addTable(userChoice);
-
   client.testAllFurniture();
 }
 

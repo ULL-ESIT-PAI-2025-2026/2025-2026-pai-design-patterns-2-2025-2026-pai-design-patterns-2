@@ -1,4 +1,3 @@
-import { FurnitureClient } from './furniture_factory_user';
 /**
  * Universidad de La Laguna
  * Escuela Superior de Ingeniería y Tecnología
@@ -12,16 +11,17 @@ import { FurnitureClient } from './furniture_factory_user';
  * @desc Main of the Abstract Factory Pattern example applied to a Furniture Factory.
  */
 
+'use strict';
+
+import { FurnitureClient } from './furniture_factory_user';
 
 function main() {
   const userChoice = 'Victorian'; // Change to 'Modern' to test modern furniture.
   const client = new FurnitureClient(userChoice);
-
   // Create some furniture items.
   client.addChair();
   client.addSofa();
   client.addTable();
-
   // Test all created furniture.
   client.testAllFurniture();
 }

@@ -1,6 +1,3 @@
-import { Chair, Sofa, Table } from './furniture_factory_products';
-import { FurnitureFactory, ModernFurnitureFactory, VictorianFurnitureFactory } from './furniture_factory_factories';
-
 /**
  * Universidad de La Laguna
  * Escuela Superior de Ingeniería y Tecnología
@@ -11,12 +8,17 @@ import { FurnitureFactory, ModernFurnitureFactory, VictorianFurnitureFactory } f
  * @author Sergio Rosales Calzadilla
  * @author Keran Miranda González
  * @since Mar 15 2026
- * @desc The client code that uses the Abstract Factory Pattern to create and manage furniture products without depending on their concrete classes.
+ * @desc The client code that uses the Abstract Factory Pattern to create and
+ *       manage furniture products without depending on their concrete classes.
  */
 
+'use strict';
+
+import { Chair, Sofa, Table } from './furniture_factory_products';
+import { FurnitureFactory, ModernFurnitureFactory, VictorianFurnitureFactory } from './furniture_factory_factories';
+
 /**
- * @class FurnitureClient
- * @description The client code works with factories and products only through abstract interfaces. [cite: 342, 380]
+ * The client code works with factories and products only through abstract interfaces. 
  */
 export class FurnitureClient {
   private furnitureFactory: FurnitureFactory;
@@ -25,11 +27,10 @@ export class FurnitureClient {
   private myTables: Table[] = [];
 
   /**
-   * @constructor
-   * @description Configures the style of the entire room/order.
-   * @param {string} userChoice - The style chosen ('Victorian' or 'Modern').
+   * Configures the style of the entire room/order.
+   * @param userChoice - The style chosen ('Victorian' or 'Modern').
    */
-  constructor(userChoice: string) {
+  constructor(private userChoice: string) {
     if (userChoice === 'Victorian') {
       this.furnitureFactory = new VictorianFurnitureFactory();
     } else if (userChoice === 'Modern') {
@@ -40,8 +41,8 @@ export class FurnitureClient {
   }
 
   /**
-   * @description Creates a chair and SAVES it in the internal collection.
-   * @returns {Chair} The newly created chair.
+   * Creates a chair and SAVES it in the internal collection.
+   * @return The newly created chair.
    */
   addChair(): Chair {
     const newChair = this.furnitureFactory.createChair();
@@ -51,8 +52,8 @@ export class FurnitureClient {
   }
 
   /**
-   * @description Creates a sofa and SAVES it in the internal collection.
-   * @returns {Sofa} The newly created sofa.
+   * Creates a sofa and SAVES it in the internal collection.
+   * @return The newly created sofa.
    */
   addSofa(): Sofa {
     const newSofa = this.furnitureFactory.createSofa();
@@ -60,9 +61,10 @@ export class FurnitureClient {
     console.log('New sofa added to your collection.');
     return newSofa;
   }
+
   /**
-   * @description Creates a table and SAVES it in the internal collection.
-   * @returns {Table} The newly created table.
+   * Creates a table and SAVES it in the internal collection.
+   * @return The newly created table.
    */
   addTable(): Table {
     const newTable = this.furnitureFactory.createTable();
@@ -72,8 +74,7 @@ export class FurnitureClient {
   }
 
   /**
-   * @description Demonstrates the use of ALL stored furniture.
-   * @returns {void}
+   * Demonstrates the use of ALL stored furniture.
    */
   testAllFurniture(): void {
     console.log(`--- Testing your inventory (${this.myChairs.length} chairs, ${this.mySofas.length} sofas, ${this.myTables.length} tables) ---`);
