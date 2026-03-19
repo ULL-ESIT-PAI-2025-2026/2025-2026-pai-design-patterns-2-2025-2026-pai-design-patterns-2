@@ -8,16 +8,16 @@
  * @author Sergio Rosales Calzadilla
  * @author Keran Miranda González
  * @since Mar 13 2026
- * @desc System that processes payments using a strategy
+ * System that processes payments using a strategy
  */
 
-import { PaymentMethod } from './MetodoPago.ts';
+import { PaymentMethod } from './payment_method.ts';
 
 export class PaymentSystem {
   private paymentMethod: PaymentMethod;
 
   /** 
-   * @desc Initializes the system with a payment strategy
+   * Initializes the system with a payment strategy
    * @param paymentMethod Payment strategy to use
    */
   constructor(paymentMethod: PaymentMethod) {
@@ -25,7 +25,7 @@ export class PaymentSystem {
   }
 
   /** 
-   * @desc Executes the payment using the selected strategy
+   * Executes the payment using the selected strategy
    */
   processPayment(): void {
     this.paymentMethod.processPayment();

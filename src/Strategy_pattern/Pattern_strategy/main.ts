@@ -12,39 +12,33 @@
 
 import * as readlineSync from 'readline-sync';
 
-import { PaymentMethod } from './MetodoPago.ts';
-import { CardPayment } from './PagoTarjeta.ts';
-import { PaypalPayment } from './PagoPayPal.ts';
-import { CashPayment } from './PagoEfectivo.ts';
-import { PaymentSystem } from './SistemaPagos.ts';
+import { PaymentMethod } from './payment_method.ts';
+import { CardPayment } from './target_payment.ts';
+import { PaypalPayment } from './paypal_payment.ts';
+import { CashPayment } from './effective_payment.ts';
+import { PaymentSystem } from './payment_system.ts';
 
 function main(): void {
   const userMethod: string = readlineSync.question(
     'Choose payment method (card/paypal/cash): '
   );
-
   let userPayment: PaymentMethod;
-
   switch (userMethod) {
     case 'card':
       const cardPin: string = readlineSync.question('Enter card PIN: ');
       userPayment = new CardPayment(cardPin);
       break;
-
     case 'paypal':
       const paypalEmail: string = readlineSync.question('Enter PayPal email: ');
       userPayment = new PaypalPayment(paypalEmail);
       break;
-
     case 'cash':
       userPayment = new CashPayment();
       break;
-
     default:
       console.log('Invalid payment method');
       return;
   }
-
   const system: PaymentSystem = new PaymentSystem(userPayment);
   system.processPayment();
 }

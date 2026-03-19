@@ -8,13 +8,18 @@
  * @author Sergio Rosales Calzadilla
  * @author Keran Miranda González
  * @since Mar 13 2026
- * @desc Abstract class representing a payment method
+ * Implementation of cash payment
  */
 
-export abstract class PaymentMethod {
+import { PaymentMethod } from './payment_method.ts';
+
+export class CashPayment extends PaymentMethod {
+
   /** 
-   * @desc Executes the payment according to the implemented method
+   * Executes the cash payment
    */
-  abstract processPayment(): void;
+  processPayment(): void {
+    console.log('Cash payment completed');
+  }
 }
 

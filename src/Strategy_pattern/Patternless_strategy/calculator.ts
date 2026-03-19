@@ -8,15 +8,14 @@
  * @author Sergio Rosales Calzadilla
  * @author Keran Miranda González
  * @since Mar 13 2026
- * @desc Large calculator without applying Strategy pattern, with many different operations
+ * Large calculator without applying Strategy pattern, with many different operations
  */
 
-import * as readlineSync from 'readline-sync';
+'use strict';
 
 class Calculator {
-
   /** 
-   * @desc Executes the operation requested by the user
+   * Executes the operation requested by the user
    * @param operation Type of operation to perform
    * @param value1 First value
    * @param value2 Second value (optional depending on operation)
@@ -107,23 +106,22 @@ class Calculator {
   }
 }
 
-function main(): void {
+function runCalculator(): void {
   const calculator: Calculator = new Calculator();
-
-  console.log('Welcome to the large calculator');
-  console.log('Available operations: sum, subtract, multiply, divide, power, sqrt, log, mod, factorial, sin, cos, tan');
-
-  const operation: string = readlineSync.question('Enter the operation you want to perform: ');
-  const value1: number = Number(readlineSync.question('Enter the first value: '));
-
-  let value2: number = 0;
-  if (['sum', 'subtract', 'multiply', 'divide', 'power', 'mod'].includes(operation)) {
-    value2 = Number(readlineSync.question('Enter the second value: '));
-  }
-
-  const result: number | string = calculator.executeOperation(operation, value1, value2);
-  console.log(`Result: ${result}`);
+  console.log('--- STARTING AUTOMATED CALCULATOR TESTS ---');
+  const res1 = calculator.executeOperation('sum', 10, 5);
+  console.log(`Test Sum (10+5): ${res1}`);
+  const res2 = calculator.executeOperation('sqrt', 25);
+  console.log(`Test Sqrt (25): ${res2}`);
+  const res3 = calculator.executeOperation('factorial', 5);
+  console.log(`Test Factorial (5!): ${res3}`);
+  const res4 = calculator.executeOperation('divide', 10, 0);
+  console.log(`Test Division by Zero: ${res4}`);
+  const res5 = calculator.executeOperation('sin', Math.PI / 2);
+  console.log(`Test Sin (PI/2): ${res5}`);
+  console.log('\n--- OBSERVATION ---');
+  console.log('Notice how every operation, regardless of its logic, is forced into a single class.');
 }
 
-main();
+runCalculator();
 
