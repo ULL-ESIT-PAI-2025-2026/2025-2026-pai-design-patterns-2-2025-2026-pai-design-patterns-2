@@ -71,7 +71,7 @@ export class SimplePart implements CarComponent {
    * @desc It returns the details of the part.
    * @return It prints the details, acts like a print-method.
    */
-  showDetails(indentation: string = ""): void {
+  showDetails(indentation: string = ''): void {
     console.log(`${indentation}- ${this.name}: $${this.price}`);
   }
 }
@@ -133,7 +133,7 @@ export class ComplexAssembly implements CarComponent {
         total += current.howMuchItCost();
       }
     }
-    return total
+    return total;
   }
 
   /**
@@ -148,10 +148,10 @@ export class ComplexAssembly implements CarComponent {
    * @desc It returns the details of the component.
    * @return It prints the details, acts like a print-method.
    */
-  showDetails(indentation: string = ""): void {
+  showDetails(indentation: string = ''): void {
     console.log(`${indentation}+ ${this.name} (Total: $${this.howMuchItCost()})`);
     for (const child of this.children) {
-      child.showDetails(indentation + "  ");
+      child.showDetails(indentation + '  ');
     }
   }
 }

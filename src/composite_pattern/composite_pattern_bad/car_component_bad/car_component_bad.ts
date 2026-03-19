@@ -92,9 +92,9 @@ export class ComplexAssembly {
   /**
    * @desc Prints the structure using specific loops for each type
    */
-  showDetails(indentation: string = ""): void {
+  showDetails(indentation: string = ''): void {
     console.log(`${indentation}+ ${this.name} (Total: $${this.howMuchItCost()})`);
     this.parts.forEach(p => console.log(`${indentation}  - ${p.getName()}: $${p.howMuchItCost()}`));
-    this.subAssemblies.forEach(s => s.showDetails(indentation + "  "));
+    this.subAssemblies.forEach(s => s.showDetails(indentation + '  '));
   }
 }

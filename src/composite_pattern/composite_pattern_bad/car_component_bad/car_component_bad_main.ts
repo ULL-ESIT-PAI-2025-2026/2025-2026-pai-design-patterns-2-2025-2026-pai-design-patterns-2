@@ -17,24 +17,24 @@ import { SimplePart, ComplexAssembly } from './car_component_bad';
  * @desc Main execution function
  */
 function main(): void {
-  console.log(" --- BAD DESIGN SYSTEM (WITHOUT COMPOSITE) --- \n");
-  const frontLeftTire = new SimplePart("Front Left Tire", 150);
-  const frontRightTire = new SimplePart("Front Right Tire", 150);
-  const engineBlock = new SimplePart("V8 Engine Block", 4500);
-  const engineSystem = new ComplexAssembly("Engine System");
+  console.log(' --- BAD DESIGN SYSTEM (WITHOUT COMPOSITE) --- \n');
+  const frontLeftTire = new SimplePart('Front Left Tire', 150);
+  const frontRightTire = new SimplePart('Front Right Tire', 150);
+  const engineBlock = new SimplePart('V8 Engine Block', 4500);
+  const engineSystem = new ComplexAssembly('Engine System');
   // ERROR: We must know specifically that this is a SimplePart
   engineSystem.addPart(engineBlock);
-  const wheelSystem = new ComplexAssembly("Wheel System");
+  const wheelSystem = new ComplexAssembly('Wheel System');
   // ERROR: We must call a different method for SimpleParts
   wheelSystem.addPart(frontLeftTire);
   wheelSystem.addPart(frontRightTire);
-  const myCar = new ComplexAssembly("Sports Car Model X");
+  const myCar = new ComplexAssembly('Sports Car Model X');
   // ERROR: We must know specifically that these are Assemblies
   myCar.addSubAssembly(engineSystem);
   myCar.addSubAssembly(wheelSystem);
   console.log(`Total Price: $${myCar.howMuchItCost()}`);
 
-  console.log("\nStructure:");
+  console.log('\nStructure:');
   myCar.showDetails();
 }
 

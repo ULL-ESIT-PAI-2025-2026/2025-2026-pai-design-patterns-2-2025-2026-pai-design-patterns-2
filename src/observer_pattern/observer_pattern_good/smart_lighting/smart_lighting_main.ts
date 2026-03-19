@@ -15,12 +15,12 @@ import { LightSwitch, LightBulb } from './smart_lighting';
 
 function main(): void {
   // Create Subjects (Switches)
-  const livingRoomSwitch = new LightSwitch("Living Room Switch");
-  const kitchenSwitch = new LightSwitch("Kitchen Switch");
+  const livingRoomSwitch = new LightSwitch('Living Room Switch');
+  const kitchenSwitch = new LightSwitch('Kitchen Switch');
   // Create Observers (Bulbs)
-  const sofaBulb = new LightBulb("Sofa Lamp");
-  const tvBulb = new LightBulb("TV Backlight");
-  const counterBulb = new LightBulb("Kitchen Counter");
+  const sofaBulb = new LightBulb('Sofa Lamp');
+  const tvBulb = new LightBulb('TV Backlight');
+  const counterBulb = new LightBulb('Kitchen Counter');
   // Initial Wiring (Subscriptions)
   livingRoomSwitch.subscribe(sofaBulb);
   livingRoomSwitch.subscribe(tvBulb);
