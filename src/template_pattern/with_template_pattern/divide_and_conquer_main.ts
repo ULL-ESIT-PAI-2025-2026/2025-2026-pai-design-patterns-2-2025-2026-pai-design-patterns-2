@@ -1,5 +1,3 @@
-import { MarathonCounter, WarehouseInspector } from './divide_and_conquer';
-
 /**
  * Universidad de La Laguna
  * Escuela Superior de Ingeniería y Tecnología
@@ -13,6 +11,8 @@ import { MarathonCounter, WarehouseInspector } from './divide_and_conquer';
  * @desc Main of the Divide and Conquer Template Pattern example. 
  */
 
+import { MarathonCounter, WarehouseInspector } from './divide_and_conquer';
+
 function main(): void {
   // First example: Counting runners in a marathon.
   const runners = ['Alice', 'Bob', 'Charlie', 'Diana', 'Eve'];
@@ -20,9 +20,7 @@ function main(): void {
   const totalRunners = counter.solve(runners);
   console.log('Runners counter:');
   console.log(`Total of runners: ${totalRunners}`);
-  
   console.log('');
-
   // Second example: Inspecting warehouse temperatures.
   const temps = [20, 22, 35, 18];
   const inspector = new WarehouseInspector();

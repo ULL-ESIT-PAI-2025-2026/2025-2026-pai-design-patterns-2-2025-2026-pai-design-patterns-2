@@ -19,7 +19,7 @@
  */
 export class MarathonCounter {
   /**
-   * @description  Algorithm for counting runners in a marathon using a divide and conquer approach.
+   * Algorithm for counting runners in a marathon using a divide and conquer approach.
    * @param data
    * @returns Total number of runners.
    */
@@ -30,7 +30,6 @@ export class MarathonCounter {
     const mid = Math.floor(data.length / 2);
     const leftHalf = data.slice(0, mid);
     const rightHalf = data.slice(mid);
-
     const leftCount = this.solve(leftHalf);
     const rightCount = this.solve(rightHalf);
     return leftCount + rightCount;
@@ -38,13 +37,12 @@ export class MarathonCounter {
 }
 
 /**
- * @class WarehouseInspector
  * @description Algorithm for inspecting temperatures in a warehouse.
  * If it detects a temperature > 30 degrees, it triggers an alert (1).
  */
 export class WarehouseInspector {
   /**
-   * @description Algorithm for inspecting temperatures in a warehouse.
+   * Algorithm for inspecting temperatures in a warehouse.
    * If it detects a temperature > 30 degrees, it triggers an alert (1).
    * @param data
    * @returns 1 if there is any temperature > 30, 0 otherwise.
@@ -59,7 +57,6 @@ export class WarehouseInspector {
     const mid = Math.floor(data.length / 2);
     const leftHalf = data.slice(0, mid);
     const rightHalf = data.slice(mid);
-
     const leftAlert = this.solve(leftHalf);
     const rightAlert = this.solve(rightHalf);
     return (leftAlert === 1 || rightAlert === 1) ? 1 : 0;
