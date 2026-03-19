@@ -49,13 +49,24 @@ class Zombie {
     this.effects = effects;
     this.position = position;
   }
-
+  
+  /**
+   * Reduces the zombie's health
+   * @param damage Amount of damage to apply
+   */
   receiveDamage(damage: number): void {
     this.health -= damage;
     if (this.health < 0) this.health = 0;
   }
-
+  /**
+   * @return The Zombine name in a string
+   */
   getName(): string { return this.name; }
+
+  /**
+   * Set a new zombie name to the actual instance
+   * @param newName the name to asign to the zombie
+   */
   setName(newName: string): void { this.name = newName; }
 
   toString(): string {
@@ -68,10 +79,8 @@ class Zombie {
 function main(): void {
   const zombies: Zombie[] = [];
   let turn: number = 1;
-
   while (true) {
     console.log(`\n--- Turn ${turn} ---`);
-
     const newZombie: Zombie = new Zombie(
       `Zombie${turn}`,
       100,
@@ -83,18 +92,13 @@ function main(): void {
       [],
       { x: turn, y: turn }
     );
-
     zombies.push(newZombie);
-
     console.log(`A new zombie has appeared: ${newZombie.toString()}`);
     zombies.forEach((zombie, idx) =>
       console.log(`${idx + 1}: ${zombie.toString()}`)
     );
-
     const action: string = readlineSync.question('Choose action (attack/exit): ');
-
     if (action === 'exit') break;
-
     if (action === 'attack') {
       const idxToAttack: number =
         Number(readlineSync.question('Choose zombie number to attack: ')) - 1;
@@ -104,7 +108,6 @@ function main(): void {
         console.log(`You attacked ${zombies[idxToAttack].toString()}`);
       } else console.log('Invalid number');
     }
-
     turn++;
   }
 }

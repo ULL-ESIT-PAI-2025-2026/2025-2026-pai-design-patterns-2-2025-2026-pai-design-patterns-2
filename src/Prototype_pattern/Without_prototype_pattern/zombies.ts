@@ -8,7 +8,7 @@
  * @author Sergio Rosales Calzadilla
  * @author Keran Miranda González
  * @since Mar 13 2026
- * @desc Zombie simulation without using Prototype pattern
+ * Zombie simulation without using Prototype pattern
  */
 
 import * as readlineSync from 'readline-sync';
@@ -19,7 +19,7 @@ class Zombie {
   private attack: number;
 
   /**
-   * @desc Creates a new zombie
+   * Creates a new zombie
    * @param name Zombie name
    * @param health Initial health
    * @param attack Attack value
@@ -31,7 +31,7 @@ class Zombie {
   }
 
   /**
-   * @desc Reduces the zombie's health
+   * Reduces the zombie's health
    * @param damage Amount of damage to apply
    */
   receiveDamage(damage: number): void {
@@ -42,7 +42,7 @@ class Zombie {
   }
 
   /**
-   * @desc Returns the zombie's health
+   * Returns the zombie's health
    * @return Current health
    */
   getHealth(): number {
@@ -50,7 +50,7 @@ class Zombie {
   }
 
   /**
-   * @desc Returns a string representation of the zombie
+   * Returns a string representation of the zombie
    * @return String with name and health
    */
   toString(): string {
@@ -61,29 +61,22 @@ class Zombie {
 function main(): void {
   const zombies: Zombie[] = [];
   let turn: number = 1;
-
   while (true) {
     console.log(`\n--- Turn ${turn} ---`);
-
     const newZombie: Zombie = new Zombie(`Zombie${turn}`, 100, 10);
     zombies.push(newZombie);
-
     console.log(`A new zombie has appeared: ${newZombie.toString()}`);
     console.log('Current zombies:');
-
     zombies.forEach((zombie, index) => {
       console.log(`${index + 1}: ${zombie.toString()}`);
     });
-
     const action: string = readlineSync.question('Choose action (attack/exit): ');
-
     if (action === 'exit') {
       console.log('Exiting the game...');
       break;
     } else if (action === 'attack') {
       const indexToAttack: number =
         Number(readlineSync.question('Choose zombie number to attack: ')) - 1;
-
       if (indexToAttack >= 0 && indexToAttack < zombies.length) {
         zombies[indexToAttack].receiveDamage(30);
         console.log(`You attacked ${zombies[indexToAttack].toString()}`);
@@ -93,7 +86,6 @@ function main(): void {
     } else {
       console.log('Invalid action');
     }
-
     turn++;
   }
 }

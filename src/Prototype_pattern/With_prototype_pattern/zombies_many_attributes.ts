@@ -11,6 +11,7 @@
  * @desc Complex zombies using Prototype pattern
  */
 
+
 import * as readlineSync from 'readline-sync';
 
 type Position = { x: number, y: number };
@@ -28,15 +29,30 @@ abstract class ZombiePrototype {
   protected effects: Effect[];
   protected position: Position;
 
+  /**
+   * Clones the current zombie
+   * @return ZombiePrototype Zombie clone
+   */
   abstract clone(): ZombiePrototype;
 
+  /**
+   * Reduces the zombie's health
+   * @param damage Amount of damage to apply
+   */
   receiveDamage(damage: number): void {
     this.health -= damage;
     if (this.health < 0) this.health = 0;
   }
 
+  /**
+   * Changes the zombie's name
+   * @param newName New name
+   */
   setName(newName: string): void { this.name = newName; }
 
+  /**
+   * @return A string with all the values of the zombie
+   */
   toString(): string {
     return `${this.name} | Health: ${this.health}, Attack: ${this.attack}, Speed: ${this.speed}, ` +
            `Abilities: [${this.abilities.join(', ')}], Inventory: [${this.inventory.map(i => i.name).join(', ')}], ` +
@@ -68,7 +84,11 @@ class Zombie extends ZombiePrototype {
     this.effects = effects;
     this.position = position;
   }
-
+  
+  /**
+  * Clones the current zombie
+  * @return ZombiePrototype Zombie clone
+  */
   clone(): ZombiePrototype {
     return new Zombie(
       this.name,
@@ -88,7 +108,6 @@ class Zombie extends ZombiePrototype {
 
 function main(): void {
   const zombies: ZombiePrototype[] = [];
-
   const baseZombie: Zombie = new Zombie(
     'BaseZombie',
     100,
@@ -100,27 +119,19 @@ function main(): void {
     [],
     { x: 0, y: 0 }
   );
-
   let turn: number = 1;
-
   while (true) {
     console.log(`\n--- Turn ${turn} ---`);
-
     const newZombie: ZombiePrototype = baseZombie.clone();
     (newZombie as Zombie).setName(`Zombie${turn}`);
     (newZombie as Zombie).setPosition({ x: turn, y: turn });
-
     zombies.push(newZombie);
-
     console.log(`A new zombie has appeared: ${newZombie.toString()}`);
     zombies.forEach((zombie, idx) =>
       console.log(`${idx + 1}: ${zombie.toString()}`)
     );
-
     const action: string = readlineSync.question('Choose action (attack/exit): ');
-
     if (action === 'exit') break;
-
     if (action === 'attack') {
       const idxToAttack: number =
         Number(readlineSync.question('Choose zombie number to attack: ')) - 1;
@@ -130,7 +141,6 @@ function main(): void {
         console.log(`You attacked ${zombies[idxToAttack].toString()}`);
       } else console.log('Invalid number');
     }
-
     turn++;
   }
 }
