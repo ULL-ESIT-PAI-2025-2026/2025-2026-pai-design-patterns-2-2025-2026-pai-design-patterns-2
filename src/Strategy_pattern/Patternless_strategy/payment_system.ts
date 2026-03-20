@@ -22,25 +22,20 @@ export class PaymentSystem {
     this.paymentMethod = paymentMethod;
   }
 
-  /** 
-   * @desc Executes the payment according to the selected method
-   */
+  /** @desc Executes the payment according to the selected method */
   processPayment(): void {
     switch (this.paymentMethod) {
       case 'card':
         const cardPin: string = "1234";
         console.log(`[CARD]: Payment completed using PIN: ${cardPin}`);
         break;
-
       case 'paypal':
         const paypalEmail: string = "user@example.com";
         console.log(`[PAYPAL]: Payment completed for email: ${paypalEmail}`);
         break;
-
       case 'cash':
         console.log('[CASH]: Cash payment completed at register');
         break;
-
       default:
         console.log(`[ERROR]: Invalid payment method "${this.paymentMethod}"`);
         break;
@@ -48,9 +43,7 @@ export class PaymentSystem {
   }
 }
 
-/** 
- * @desc Main function to execute payment example without Strategy
- */
+/** @desc Main function to execute payment example without Strategy */
 export function main(): void {
   console.log("--- STARTING AUTOMATED PAYMENT SIMULATION ---");
   console.log("\nScenario 1: User chooses Card");

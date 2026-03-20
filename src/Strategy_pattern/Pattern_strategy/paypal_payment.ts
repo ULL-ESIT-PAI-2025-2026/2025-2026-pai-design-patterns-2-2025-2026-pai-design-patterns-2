@@ -25,9 +25,7 @@ export class PaypalPayment extends PaymentMethod {
     this.email = email;
   }
 
-  /** 
-   * @desc Executes the PayPal payment
-   */
+  /** @desc Executes the PayPal payment */
   processPayment(): void {
     console.log(`Payment via PayPal completed, email: ${this.email}`);
   }

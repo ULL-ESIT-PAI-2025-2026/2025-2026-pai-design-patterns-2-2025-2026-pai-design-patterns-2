@@ -13,9 +13,7 @@
 
 import * as readlineSync from 'readline-sync';
 
-/**
- * @desc Class that represents a current Zombie
- */
+/** @desc Class that represents a current Zombie */
 class Zombie {
   private name: string;
   private health: number;

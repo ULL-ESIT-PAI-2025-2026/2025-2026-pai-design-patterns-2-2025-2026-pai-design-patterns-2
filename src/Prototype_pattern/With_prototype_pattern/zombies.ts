@@ -45,9 +45,7 @@ abstract class ZombiePrototype {
   }
 }
 
-/**
- * @desc Class to represent a Zombie
- */
+/** @desc Class to represent a Zombie */
 class Zombie extends ZombiePrototype {
   /**
    * @desc Initializes a zombie with name, health and attack

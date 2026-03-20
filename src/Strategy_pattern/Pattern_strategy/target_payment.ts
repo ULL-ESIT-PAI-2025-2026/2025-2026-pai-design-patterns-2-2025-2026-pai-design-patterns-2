@@ -25,9 +25,7 @@ export class CardPayment extends PaymentMethod {
     this.pin = pin;
   }
 
-  /** 
-   * @desc Executes the card payment
-   */
+  /** @desc Executes the card payment */
   processPayment(): void {
     console.log(`Payment by card completed, PIN: ${this.pin}`);
   }

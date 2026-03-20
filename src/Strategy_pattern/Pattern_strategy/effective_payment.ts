@@ -15,9 +15,7 @@ import { PaymentMethod } from './payment_method.ts';
 
 export class CashPayment extends PaymentMethod {
 
-  /** 
-   * @desc Executes the cash payment
-   */
+  /** @desc Executes the cash payment */
   processPayment(): void {
     console.log('Cash payment completed');
   }

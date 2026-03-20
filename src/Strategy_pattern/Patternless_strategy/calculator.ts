@@ -21,20 +21,16 @@ class Calculator {
    */
   executeOperation(operation: string, value1: number, value2: number = 0): number | string {
     let result: number | string = 0;
-
     switch (operation) {
       case 'sum':
         result = value1 + value2;
         break;
-
       case 'subtract':
         result = value1 - value2;
         break;
-
       case 'multiply':
         result = value1 * value2;
         break;
-
       case 'divide':
         if (value2 === 0) {
           result = 'Error: division by zero';
@@ -42,11 +38,9 @@ class Calculator {
           result = value1 / value2;
         }
         break;
-
       case 'power':
         result = Math.pow(value1, value2);
         break;
-
       case 'sqrt':
         if (value1 < 0) {
           result = 'Error: square root of negative number';
@@ -54,7 +48,6 @@ class Calculator {
           result = Math.sqrt(value1);
         }
         break;
-
       case 'log':
         if (value1 <= 0) {
           result = 'Error: logarithm of non-positive number';
@@ -62,7 +55,6 @@ class Calculator {
           result = Math.log(value1);
         }
         break;
-
       case 'mod':
         if (value2 === 0) {
           result = 'Error: modulo by zero';
@@ -70,7 +62,6 @@ class Calculator {
           result = value1 % value2;
         }
         break;
-
       case 'factorial':
         if (value1 < 0) {
           result = 'Error: factorial of negative number';
@@ -82,24 +73,19 @@ class Calculator {
           result = factorial;
         }
         break;
-
       case 'sin':
         result = Math.sin(value1);
         break;
-
       case 'cos':
         result = Math.cos(value1);
         break;
-
       case 'tan':
         result = Math.tan(value1);
         break;
-
       default:
         result = 'Invalid operation';
         break;
     }
-
     return result;
   }
 }

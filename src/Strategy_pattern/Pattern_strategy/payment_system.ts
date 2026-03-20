@@ -24,9 +24,7 @@ export class PaymentSystem {
     this.paymentMethod = paymentMethod;
   }
 
-  /** 
-   * @desc Executes the payment using the selected strategy
-   */
+  /** @desc Executes the payment using the selected strategy */
   processPayment(): void {
     this.paymentMethod.processPayment();
   }

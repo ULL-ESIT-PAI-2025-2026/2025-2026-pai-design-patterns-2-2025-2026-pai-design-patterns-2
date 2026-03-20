@@ -13,14 +13,12 @@
 
 import * as readlineSync from 'readline-sync';
 
-type Position = { x: number, y: number };
+type Position = { coordenadaX: number, coordenadaY: number };
 type Item = { name: string, quantity: number };
 type Effect = { type: string, duration: number };
 
 
-/**
- * @desc Class to represent the Prototype pattern with the Zombie game
- */
+/** @desc Class to represent the Prototype pattern with the Zombie game */
 abstract class ZombiePrototype {
   protected name: string;
   protected health: number;
@@ -53,13 +51,11 @@ abstract class ZombiePrototype {
    */
   setName(newName: string): void { this.name = newName; }
 
-  /**
-   * @return A string with all the values of the zombie
-   */
+  /** @return A string with all the values of the zombie */
   toString(): string {
     return `${this.name} | Health: ${this.health}, Attack: ${this.attack}, Speed: ${this.speed}, ` +
            `Abilities: [${this.abilities.join(', ')}], Inventory: [${this.inventory.map(i => i.name).join(', ')}], ` +
-           `Effects: [${this.effects.map(e => e.type).join(', ')}], Position: (${this.position.x},${this.position.y})`;
+           `Effects: [${this.effects.map(e => e.type).join(', ')}], Position: (${this.position.coordenadaX},${this.position.coordenadaY})`;
   }
 }
 
@@ -128,18 +124,18 @@ function main(): void {
     ['bite', 'run'],
     [{ name: 'skull', quantity: 1 }],
     [],
-    { x: 0, y: 0 }
+    { coordenadaX: 0, coordenadaY: 0 }
   );
   let turn: number = 1;
   while (true) {
     console.log(`\n--- Turn ${turn} ---`);
     const newZombie: ZombiePrototype = baseZombie.clone();
     (newZombie as Zombie).setName(`Zombie${turn}`);
-    (newZombie as Zombie).setPosition({ x: turn, y: turn });
+    (newZombie as Zombie).setPosition({ coordenadaX: turn, coordenadaY: turn });
     zombies.push(newZombie);
     console.log(`A new zombie has appeared: ${newZombie.toString()}`);
-    zombies.forEach((zombie, idx) =>
-      console.log(`${idx + 1}: ${zombie.toString()}`)
+    zombies.forEach((zombie, index) =>
+      console.log(`${index + 1}: ${zombie.toString()}`)
     );
     const action: string = readlineSync.question('Choose action (attack/exit): ');
     if (action === 'exit') break;

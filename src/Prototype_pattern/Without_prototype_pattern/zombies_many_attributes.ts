@@ -13,13 +13,11 @@
 
 import * as readlineSync from 'readline-sync';
 
-type Position = { x: number, y: number };
+type Position = { coordenadaX: number, coordenadaY: number };
 type Item = { name: string, quantity: number };
 type Effect = { type: string, duration: number };
 
-/**
- * @desc Class to represnt a Zombie with huge amount of attributes
- */
+/** @desc Class to represnt a Zombie with huge amount of attributes */
 class Zombie {
   private name: string;
   private health: number;
@@ -80,7 +78,7 @@ class Zombie {
   toString(): string {
     return `${this.name} | Health: ${this.health}, Attack: ${this.attack}, Speed: ${this.speed}, ` +
            `Abilities: [${this.abilities.join(', ')}], Inventory: [${this.inventory.map(i => i.name).join(', ')}], ` +
-           `Effects: [${this.effects.map(e => e.type).join(', ')}], Position: (${this.position.x},${this.position.y})`;
+           `Effects: [${this.effects.map(e => e.type).join(', ')}], Position: (${this.position.coordenadaX},${this.position.coordenadaY})`;
   }
 }
 

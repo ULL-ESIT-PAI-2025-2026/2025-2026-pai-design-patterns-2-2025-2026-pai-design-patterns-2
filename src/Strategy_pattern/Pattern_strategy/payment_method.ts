@@ -12,9 +12,7 @@
  */
 
 export abstract class PaymentMethod {
-  /** 
-   * @desc Executes the payment according to the implemented method
-   */
+  /** @desc Executes the payment according to the implemented method */
   abstract processPayment(): void;
 }
 
