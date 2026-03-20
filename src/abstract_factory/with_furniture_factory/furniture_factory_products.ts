@@ -11,9 +11,7 @@
  * @desc Definition of the products for the Abstract Factory Pattern applied to a Furniture Factory.
  */
 
-/** 
- * @desc Represents the abstract product for all types of chairs.
- */
+/** @desc Represents the abstract product for all types of chairs. */
 export interface Chair {
   /** 
    * @desc Checks if the chair design includes legs.
@@ -21,14 +19,10 @@ export interface Chair {
    */
   hasLegs(): boolean;
 
-  /**
-   * @desc Performs the action of sitting on the chair.
-   */
+  /** @desc Performs the action of sitting on the chair. */
   sitOn(): void;
 }
-/**
- * @desc Represents the abstract product for all types of sofas.
- */
+/** @desc Represents the abstract product for all types of sofas. */
 export interface Sofa {
   /** 
    * @desc Determines if the sofa meets comfort standards.
@@ -36,13 +30,10 @@ export interface Sofa {
    */
   isComfortable(): boolean;
 
-  /** * @desc Performs the action of lying down on the sofa.
-   */
+  /** @desc Performs the action of lying down on the sofa. */
   lieOn(): void;
 }
-/**
- * @desc Represents the abstract product for all types of coffee tables.
- */
+/** @desc Represents the abstract product for all types of coffee tables. */
 export interface Table {
   /**
    * @desc Gets the physical dimensions of the table.
@@ -50,15 +41,11 @@ export interface Table {
    */
   getSize(): number;
 
-  /** 
-   * @desc Performs the action of placing a drink on the table.
-   */
+  /** @desc Performs the action of placing a drink on the table. */
   putSomeDrink(): void;
 }
 
-/**
- * @desc Concrete Victorian-style chair.
- */
+/** @desc Concrete Victorian-style chair. */
 export class VictorianChair implements Chair {
   /** 
    * @desc Victorian chairs always feature ornate wooden legs.
@@ -66,14 +53,11 @@ export class VictorianChair implements Chair {
    */
   hasLegs(): boolean { return true; }
 
-  /** * @desc Sitting action for a Victorian chair.
-   */
+  /** @desc Sitting action for a Victorian chair. */
   sitOn(): void { console.log('Sitting in a Victorian chair'); }
 }
 
-/**
- * @desc Concrete Modern-style chair.
- */
+/** @desc Concrete Modern-style chair. */
 export class ModernChair implements Chair {
   /** 
    * @desc Modern chairs might have a cantilever or pedestal base.
@@ -81,15 +65,11 @@ export class ModernChair implements Chair {
    */
   hasLegs(): boolean { return false; }
 
-  /** 
-   * @desc Sitting action for a Modern chair.
-   */
+  /** @desc Sitting action for a Modern chair. */
   sitOn(): void { console.log('Sitting in a Modern chair'); }
 }
 
-/**
- * @desc Concrete Victorian-style sofa.
- */
+/** @desc Concrete Victorian-style sofa. */
 export class VictorianSofa implements Sofa {
   /** 
    * @desc Checks if the Victorian sofa is comfortable.
@@ -97,15 +77,11 @@ export class VictorianSofa implements Sofa {
    */
   isComfortable(): boolean { return true; }
 
-  /** 
-   * @desc Performs the action of lying down on the Victorian sofa.
-   */
+  /** @desc Performs the action of lying down on the Victorian sofa. */
   lieOn(): void { console.log('Lying on a Victorian sofa.'); }
 }
 
-/**
- * @desc Concrete Modern-style sofa.
- */
+/** @desc Concrete Modern-style sofa. */
 export class ModernSofa implements Sofa {
   /** 
    * @desc Checks if the Modern sofa is comfortable.
@@ -113,14 +89,11 @@ export class ModernSofa implements Sofa {
    */
   isComfortable(): boolean { return true; }
 
-  /** * @desc Performs the action of lying down on the Modern sofa.
-   */
+  /** @desc Performs the action of lying down on the Modern sofa. */
   lieOn(): void { console.log('Lying on a Modern sofa.'); }
 }
 
-/**
- * @desc Concrete Modern-style coffee table.
- */
+/** @desc Concrete Modern-style coffee table. */
 export class ModernTable implements Table {
   /**
    * @desc Gets the physical dimensions of the Modern table.
@@ -128,14 +101,11 @@ export class ModernTable implements Table {
    */
   getSize(): number { return 100; }
 
-  /** * @desc Performs the action of placing a drink on the Modern table.
-   */
+  /** @desc Performs the action of placing a drink on the Modern table. */
   putSomeDrink(): void { console.log('Placing a drink on a Modern table.'); }
 }
 
-/**
- * @desc Concrete Victorian-style coffee table.
- */
+/** @desc Concrete Victorian-style coffee table. */
 export class VictorianTable implements Table {
   /** 
    * @desc Gets the physical dimensions of the Victorian table.
@@ -143,8 +113,6 @@ export class VictorianTable implements Table {
    */
   getSize(): number { return 150; }
 
-  /** 
-   * @desc Performs the action of placing a drink on the Victorian table.
-   */
+  /** @desc Performs the action of placing a drink on the Victorian table. */
   putSomeDrink(): void { console.log('Placing a drink on a Victorian table.'); }
 }

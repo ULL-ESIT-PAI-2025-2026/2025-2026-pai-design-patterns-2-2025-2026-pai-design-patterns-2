@@ -11,9 +11,7 @@
  * @desc Example of different algorithms that solve the same problem without using a common template.
  */
 
-/**
- * @desc Counts runners in a marathon.
- */
+/** @desc Counts runners in a marathon. */
 export class MarathonCounter {
   /**
    * @desc Algorithm for counting runners in a marathon using a divide and conquer approach.

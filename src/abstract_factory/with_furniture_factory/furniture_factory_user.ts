@@ -17,9 +17,7 @@
 import { Chair, Sofa, Table } from './furniture_factory_products';
 import { FurnitureFactory, ModernFurnitureFactory, VictorianFurnitureFactory } from './furniture_factory_factories';
 
-/**
- * @desc The client code works with factories and products only through abstract interfaces. 
- */
+/** @desc The client code works with factories and products only through abstract interfaces. */
 export class FurnitureClient {
   private furnitureFactory: FurnitureFactory;
   private myChairs: Chair[] = [];
@@ -73,9 +71,7 @@ export class FurnitureClient {
     return newTable;
   }
 
-  /**
-   * @desc Demonstrates the use of ALL stored furniture.
-   */
+  /** @desc Demonstrates the use of ALL stored furniture. */
   testAllFurniture(): void {
     console.log(`--- Testing your inventory (${this.myChairs.length} chairs, ${this.mySofas.length} sofas, ${this.myTables.length} tables) ---`);
     this.myChairs.forEach(chair => chair.sitOn());

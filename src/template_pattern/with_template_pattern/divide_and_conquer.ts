@@ -11,9 +11,7 @@
  * @desc Template pattern applied to a Divide and Conquer template. 
  */
 
-/**
- * @desc Abstract class that defines the template method for a divide and conquer algorithm.
- */
+/** @desc Abstract class that defines the template method for a divide and conquer algorithm.*/
 abstract class DivideAndConquer {
   /**
    * @desc template method that defines the skeleton of the divide and conquer algorithm. 
@@ -60,9 +58,7 @@ abstract class DivideAndConquer {
   protected abstract combine(res1: number, res2: number): number;
 }
 
-/**
- * @desc Counts the number of runners in a marathon using the divide and conquer approach.
- */
+/** @desc Counts the number of runners in a marathon using the divide and conquer approach. */
 export class MarathonCounter extends DivideAndConquer {
   /**
    * @desc Checks if the data array is a base case (0 or 1 runner).

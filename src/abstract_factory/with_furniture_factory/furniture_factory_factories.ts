@@ -16,57 +16,33 @@
 import { Chair, Sofa, Table } from './furniture_factory_products';
 import { VictorianChair, ModernChair, VictorianSofa, ModernSofa, VictorianTable, ModernTable } from './furniture_factory_products';
 
-/** 
- * @desc The Abstract Factory interface declares methods for creating abstract products. 
- */
+/** @desc The Abstract Factory interface declares methods for creating abstract products. */
 export interface FurnitureFactory {
-  /** 
-   * @return A concrete chair instance.
-   */
+  /** @return A concrete chair instance. */
   createChair(): Chair;
-  /**   
-   * @return A concrete sofa instance.
-   */
+  /** @return A concrete sofa instance. */
   createSofa(): Sofa;
-  /** 
-   * @return A concrete coffee table instance.
-   */
+  /** @return A concrete coffee table instance. */
   createTable(): Table;
 }
 
-/**
- * @desc Concrete factory that produces Victorian style furniture. 
- */
+/** @desc Concrete factory that produces Victorian style furniture. */
 export class VictorianFurnitureFactory implements FurnitureFactory {
 
-  /** 
-   * @return A Victorian chair instance.
-   */
+  /** @return A Victorian chair instance. */
   createChair(): Chair { return new VictorianChair(); }
-  /** 
-   * @return A Victorian sofa instance.
-   */
+  /** @return A Victorian sofa instance. */
   createSofa(): Sofa { return new VictorianSofa(); }
-  /** 
-   * @return A Victorian table instance.
-   */
+  /** @return A Victorian table instance. */
   createTable(): Table { return new VictorianTable(); }
 }
 
-/**
- * @desc Concrete factory that produces Modern style furniture.
- */
+/** @desc Concrete factory that produces Modern style furniture. */
 export class ModernFurnitureFactory implements FurnitureFactory {
-  /** 
-   * @return A Modern chair instance.
-   */
+  /** @return A Modern chair instance. */
   createChair(): Chair { return new ModernChair(); }
-  /** 
-   * @return A Modern sofa instance.
-   */
+  /** @return A Modern sofa instance. */
   createSofa(): Sofa { return new ModernSofa(); }
-  /** 
-   * @return A Modern table instance.
-   */
+  /** @return A Modern table instance. */
   createTable(): Table { return new ModernTable(); }
 }

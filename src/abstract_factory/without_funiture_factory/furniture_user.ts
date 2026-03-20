@@ -12,11 +12,9 @@
  */
 
 import { Chair, ModernChair, ModernSofa, ModernTable, Sofa,
-    Table, VictorianChair, VictorianSofa, VictorianTable, } from './furniture_products';
+  Table, VictorianChair, VictorianSofa, VictorianTable, } from './furniture_products';
 
-/**
- * @desc Class that simulates a client that creates and manages furniture items without using the Abstract Factory Pattern.
- */
+/** @description class that simulates a client that creates and manages furniture items without using the Abstract Factory Pattern.*/
 export class FurnitureClientWithoutFactory {
   private myChairs: Chair[] = [];
   private mySofas: Sofa[] = [];
@@ -76,9 +74,7 @@ export class FurnitureClientWithoutFactory {
     }
   }
 
-  /**
-   * @desc Demonstrates the use of all stored furniture items in the client's inventory.
-   */
+  /** @desc Demonstrates the use of all stored furniture items in the client's inventory. */
   testAllFurniture(): void {
     const totalFurniture = this.myChairs.length + this.mySofas.length + this.myTables.length;
     console.log(`--- Testing your inventory (${totalFurniture} items) ---`);

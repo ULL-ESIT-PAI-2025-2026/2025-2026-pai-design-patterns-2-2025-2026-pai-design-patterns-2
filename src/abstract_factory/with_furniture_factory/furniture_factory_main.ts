@@ -13,9 +13,7 @@
 
 import { FurnitureClient } from './furniture_factory_user';
 
-/**
- * @desc Main execution function
- */
+/** @desc Main execution function */
 function main() {
   const userChoice = 'Victorian'; // Change to 'Modern' to test modern furniture.
   const client = new FurnitureClient(userChoice);

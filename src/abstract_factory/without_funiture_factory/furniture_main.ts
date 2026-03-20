@@ -13,9 +13,7 @@
 
 import { FurnitureClientWithoutFactory } from './furniture_user';
 
-/**
- * @desc Main execution function
- */
+/** @desc Main execution function */
 function main() {
   const userChoice = 'Victorian';
   const client = new FurnitureClientWithoutFactory();
