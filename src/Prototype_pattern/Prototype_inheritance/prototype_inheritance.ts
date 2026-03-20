@@ -68,6 +68,37 @@ const anotherArray = [10, 20];
 anotherArray.push(30);
 console.log(anotherArray); // → [10, 20, 30]
 
+/** EXAMPLE: Using Constructor.prototype to share methods */
+function Person(name: string) {
+  this.name = name;
+}
+
+// Add a method to the prototype
+Person.prototype.sayHi = function (): void {
+  console.log(`Hi, my name is ${this.name}`);
+};
+
+// Create two instances
+const alice = new Person("Alice");
+const bob = new Person("Bob");
+
+// Both instances can use sayHi
+alice.sayHi(); // "Hi, my name is Alice"
+bob.sayHi();   // "Hi, my name is Bob"
+
+// The method is shared, not copied
+console.log(alice.sayHi === bob.sayHi); // true
+
+alice.age = 25;         // only affects alice
+console.log(bob.age);   // undefined
+
+// Overriding a method in a single instance
+bob.sayHi = function (): void {
+  console.log(`Hello! I'm ${this.name}`);
+};
+bob.sayHi();   // "Hello! I'm Bob"
+alice.sayHi(); // "Hi, my name is Alice" → original prototype method
+
 /**
  * -------------------------------------------------------
  * CONCLUSION
