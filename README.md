@@ -26,22 +26,18 @@ We focus on four critical patterns that solve common problems in software scalab
 
 
 ## Authors
-* **Saúl Lorenzo Armas**
-* **Sergio Rosales Calzadilla**
-* **Keran Miranda González**
+* **Saúl Lorenzo Armas** (_saul.lorenzo.armas.37@ull.edu.es_)
+
+* **Sergio Rosales Calzadilla** (_sergio.rosales.23@ull.edu.es_)
+
+* **Keran Miranda González** (_keran.gonzalez.14@ull.edu.es_)
 
 ---
 
-## ⚠️ Important: Living Study Material
-This repository is considered **official study material** at the same level as the theoretical class sessions. It is a "living" project and is subject to **constant updates**, refactors, and new examples.
-
-> [!CAUTION]
-> **Action Required:** To ensure you are studying the correct and most optimized version of the patterns, users must **git pull** the latest changes every time they access the repository. Working with outdated code may lead to misunderstanding the architectural improvements presented.
-
 ## Guidelines for Students
 * **Comparative Learning:** We highly recommend comparing the `bad_design` files with the final implementations to understand the "Why" behind each pattern.
-* **Evaluation:** This repository is the primary source for the work's evaluation. All code follows the ESIT-ULL programming standards.
-* **Forum Access:** The link to this repository is available in the PAI forum for collective review and exam preparation.
+* **Code Style**: All code is **intended** for **educational purposes**. It does not follow the coding style guidelines recommended for the subject, as its goal is to help study, explore, and understand design pattern concepts.
+* **Forum Access:** The link to this repository is available in the PAI forum for collective review and practice preparation.
 
 
 
