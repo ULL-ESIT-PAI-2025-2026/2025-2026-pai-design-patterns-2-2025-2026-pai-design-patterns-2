@@ -13,7 +13,7 @@
 
 /**
  * @desc Interface representing an Observer in the pattern.
- * Any class that wants to be notified must implement this interface.
+ *     Any class that wants to be notified must implement this interface.
  */
 export interface Observer {
   /**
@@ -25,7 +25,7 @@ export interface Observer {
 
 /**
  * @desc Interface representing a Subject in the pattern.
- * Defines the basic methods to manage subscribers and notify them.
+ *     Defines the basic methods to manage subscribers and notify them.
  */
 export interface Subject {
   /**
@@ -50,7 +50,7 @@ export interface Subject {
 
 /**
  * @desc Subject representing a smart light switch.
- * It maintains a list of connected bulbs and notifies them when toggled.
+ *     It maintains a list of connected bulbs and notifies them when toggled.
  */
 export class LightSwitch implements Subject {
   private subscribers: Observer[];
@@ -99,9 +99,7 @@ export class LightSwitch implements Subject {
     }
   }
 
-  /**
-   * @desc Toggles the switch state (ON to OFF, or OFF to ON) and triggers a notification.
-   */
+  /** @desc Toggles the switch state (ON to OFF, or OFF to ON) and triggers a notification. */
   toggle(): void {
     this.isTurnedOn = !this.isTurnedOn;
     console.log(`\n--- Action: Someone flipped the ${this.name} ---`);
@@ -111,7 +109,7 @@ export class LightSwitch implements Subject {
 
 /**
  * @desc Observer representing a light bulb connected to a switch.
- * It reacts to the power state changes broadcasted by the switch.
+ *     It reacts to the power state changes broadcasted by the switch.
  */
 export class LightBulb implements Observer {
   private location: string;

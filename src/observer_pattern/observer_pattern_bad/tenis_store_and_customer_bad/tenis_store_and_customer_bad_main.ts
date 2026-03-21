@@ -13,9 +13,7 @@
 
 import { TenisStore, Customer } from './tenis_store_and_customer_bad';
 
-/**
- * @desc Main function to execute the simulation.
- */
+/** @desc Main function to execute the simulation */
 function main(): void {
   const myTenisStore = new TenisStore();
   const carlosAlcaraz = new Customer('Carlos Alcaraz');

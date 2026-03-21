@@ -13,6 +13,7 @@
 
 import { LightSwitch, LightBulb } from './smart_lighting';
 
+/** @desc Main function to execute the simulation */
 function main(): void {
   // Create Subjects (Switches)
   const livingRoomSwitch = new LightSwitch('Living Room Switch');

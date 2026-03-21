@@ -13,8 +13,6 @@
  * worrying about their internal logic, and Observers react to every notification.
  */
 
-
-
 /**
  * @desc Interface representing an Observer in the pattern.
  *     Any class that wants to be notified must implement this interface.
@@ -57,9 +55,7 @@ export interface Subject {
  */
 export class TenisStore implements Subject {
   private subscribers: Observer[];
-  /**
-   * @desc Initializes the TenisStore with an empty list of subscribers.
-   */
+  /** @desc Initializes the TenisStore with an empty list of subscribers. */
   constructor() {
     this.subscribers = [];
   }
@@ -109,7 +105,7 @@ export class TenisStore implements Subject {
 
 /**
  * @desc Concrete implementation of an Observer.
- * Represents a Customer. If they are subscribed, they are interested in the updates.
+ *     Represents a Customer. If they are subscribed, they are interested in the updates.
  */
 export class Customer implements Observer {
   /**
@@ -131,7 +127,7 @@ export class Customer implements Observer {
 
   /**
    * @desc Getter for the customer's name (useful for external logs).
-   * @returns The customer's name.
+   * @return The customer's name.
    */
   getName(): string {
     return this.name;

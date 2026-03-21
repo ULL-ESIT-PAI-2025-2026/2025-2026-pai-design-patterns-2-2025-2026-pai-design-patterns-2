@@ -15,7 +15,7 @@ import { TenisStore, Customer } from './tenis_store_and_customers';
 
 /**
  * @desc Main function to execute the Observer pattern simulation.
- * It creates a store, some customers, and simulates subscriptions and product releases.
+ *     It creates a store, some customers, and simulates subscriptions and product releases.
  */
 function main(): void {
   const myTenisStore = new TenisStore();
