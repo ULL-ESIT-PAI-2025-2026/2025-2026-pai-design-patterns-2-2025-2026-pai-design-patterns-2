@@ -11,8 +11,6 @@
  * @desc Implementation of the Composite Pattern using a Corporate Organization Chart.
  */
 
-
-
 /** 
  * @desc Represents any person or group in the company. 
  *     Both individual workers and managers will implement this.
@@ -38,9 +36,7 @@ export interface CompanyMember {
   showHierarchy(indentation: string): void;
 }
 
-/**
- * @desc Leaf class representing a standard employee with no subordinates.
- */
+/** @desc Leaf class representing a standard employee with no subordinates. */
 export class Worker implements CompanyMember {
   /**
    * @desc Initializes a standard worker.
@@ -79,9 +75,7 @@ export class Worker implements CompanyMember {
   }
 }
 
-/**
- * @desc Composite class representing a manager who oversees other employees (Workers or other Managers).
- */
+/** @desc Composite class representing a manager who oversees other employees (Workers or other Managers). */
 export class Manager implements CompanyMember {
   private subordinates: CompanyMember[];
 

@@ -13,9 +13,7 @@
 
 import { SimplePart, ComplexAssembly } from './car_component';
 
-/**
- * @desc Main execution function
- */
+/** @desc Main execution function */
 function main(): void {
   console.log(' --- CAR MECHANIC QUOTATION SYSTEM --- \n');
   // Create simple parts (Leaves)

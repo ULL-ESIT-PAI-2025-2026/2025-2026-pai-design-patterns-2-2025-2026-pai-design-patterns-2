@@ -11,57 +11,41 @@
  * @desc BAD DESIGN: Implementation WITHOUT Composite Pattern. 
  */
 
-/**
- * @desc Class for basic car components
- */
+/** @desc Class for basic car components */
 export class SimplePart {
-  /**
-   * @desc Initializes a simple part
-   */
+  /** @desc Initializes a simple part */
   constructor(private name: string, private price: number) {
     this.name = name;
     this.price = price;
   }
 
-  /**
-   * @return The price value
-   */
+  /** @return The price value*/
   howMuchItCost(): number {
     return this.price;
   }
 
-  /**
-   * @return The name string
-   */
+  /** @return The name in a string */
   getName(): string {
     return this.name;
   }
 }
 
-/**
- * @desc Class for grouped car components without common interface
- */
+/** @desc Class for grouped car components without common interface */
 export class ComplexAssembly {
   private parts: SimplePart[] = [];
   private subAssemblies: ComplexAssembly[] = [];
 
-  /**
-   * @desc Initializes an assembly
-   */
+  /** @desc Initializes an assembly */
   constructor(private name: string) {
     this.name = name;
   }
 
-  /**
-   * @desc Adds a simple part to the internal list
-   */
+  /** @desc Adds a simple part to the internal list */
   addPart(part: SimplePart): void {
     this.parts.push(part);
   }
 
-  /**
-   * @desc Adds another assembly to the internal list
-   */
+  /** * @desc Adds another assembly to the internal list */
   addSubAssembly(assembly: ComplexAssembly): void {
     this.subAssemblies.push(assembly);
   }
@@ -81,17 +65,12 @@ export class ComplexAssembly {
     return total;
   }
 
-  /**
-   * @desc Gets the assembly name
-   * @return The name string
-   */
+  /** @return The assembly name in a string */
   getName(): string {
     return this.name;
   }
 
-  /**
-   * @desc Prints the structure using specific loops for each type
-   */
+  /** @desc Prints the structure using specific loops for each type */
   showDetails(indentation: string = ''): void {
     console.log(`${indentation}+ ${this.name} (Total: $${this.howMuchItCost()})`);
     this.parts.forEach(p => console.log(`${indentation}  - ${p.getName()}: $${p.howMuchItCost()}`));

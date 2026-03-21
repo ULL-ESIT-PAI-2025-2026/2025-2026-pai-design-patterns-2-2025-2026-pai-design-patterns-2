@@ -92,9 +92,7 @@ export class ComplexAssembly implements CarComponent {
     this.children = [];
   }
 
-  /**
-   * @return The childrens of the node
-   */
+  /** @return The childrens of the node */
   getChildren() : CarComponent[] {
     return this.children;
   }

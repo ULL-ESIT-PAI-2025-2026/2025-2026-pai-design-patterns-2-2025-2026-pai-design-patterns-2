@@ -11,9 +11,7 @@
 
 import { Worker, Manager } from './company_structure';
 
-/**
- * @desc Main execution function
- */
+/** @desc Main execution function */
 function main(): void {
   console.log("--- CORPORATE PAYROLL SYSTEM --- \n");
   // Create Individual Contributors (Leaves)

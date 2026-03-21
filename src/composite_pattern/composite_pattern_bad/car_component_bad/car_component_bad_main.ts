@@ -13,9 +13,7 @@
 
 import { SimplePart, ComplexAssembly } from './car_component_bad';
 
-/**
- * @desc Main execution function
- */
+/** @desc Main execution function */
 function main(): void {
   console.log(' --- BAD DESIGN SYSTEM (WITHOUT COMPOSITE) --- \n');
   const frontLeftTire = new SimplePart('Front Left Tire', 150);
@@ -33,7 +31,6 @@ function main(): void {
   myCar.addSubAssembly(engineSystem);
   myCar.addSubAssembly(wheelSystem);
   console.log(`Total Price: $${myCar.howMuchItCost()}`);
-
   console.log('\nStructure:');
   myCar.showDetails();
 }
